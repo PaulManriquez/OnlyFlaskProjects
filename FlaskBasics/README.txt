@@ -1,0 +1,1 @@
+This is a simple practice with a comments, to recognize the environment of flask and how it works

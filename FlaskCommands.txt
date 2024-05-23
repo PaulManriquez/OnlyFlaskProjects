@@ -1,0 +1,40 @@
+Virtual environment
+1) py -m venv env (will create the folder to hold the versions that you need)
+2) env\Scripts\activate (Will activate the virtual enviroment)
+3) pip freeze (shows the current Libraries/Packages installed)
+4) pip install (flask) (pip install|librarie that you want)
+
+5) set FLASK_APP = app.py (app.py is your main file where is running flask, in this line you are saying)
+			  (to flask, what is your main application where will runs) 
+6) flask run (Since we have stablish what is our flask page to run, we can type this command to run the server)
+
+7) deactivate (disables the virtual environment)
+
+8) export FLASK_DEBUG=1 | set FLASK_DEBUG=1 + flask run (Enter in debug mode in the terminal)
+
+9) export FLASK_APP = (anotherFile.py) (You can change the name of the file to run another flask instance in terminal mode)
+
+============================
+      HTTP methods
+GET: Retrieve Data (default)
+POST: Send data 
+PUT: Update data
+DELETE: Delete data
+PATCH / OPTIONS / HEAD
+===========================
+
+Quotes:
+
+I was having trouble connecting the data base as: 
+sql = sqlite3.connect('/mnt/c/Users/Paul\ Manriquez/Desktop/FlaskProyects/DataBasesFlask/data.db')
+with the absolute path where is located the data base, so the solution was to put directly in the proyect
+my data base inside the directory "DataBase"
+
+
+@app.route('/ShowDataBase')
+def ShowContentInDataBase():
+    db = get_db() # Conecction
+    cur = db.execute('SELECT id, name, location from users') # Write the query
+    results = cur.fetchall() #Retrieve the row data
+    #Since we are only reading from the data base we dont need a commit sentece to do de query
+    return render_template('ShowDataBase.html', results=results)
