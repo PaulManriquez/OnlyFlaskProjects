@@ -14,6 +14,7 @@ Virtual environment
 
 9) export FLASK_APP = (anotherFile.py) (You can change the name of the file to run another flask instance in terminal mode)
 
+
 ============================
       HTTP methods
 GET: Retrieve Data (default)
@@ -38,3 +39,15 @@ def ShowContentInDataBase():
     results = cur.fetchall() #Retrieve the row data
     #Since we are only reading from the data base we dont need a commit sentece to do de query
     return render_template('ShowDataBase.html', results=results)
+
+if you are using a reference style in a form like this: <form method="POST" action="{{url_for('view_F',date = '20170520')}}">
+Ensure that {url_for('view_F'... ->viewF is the name of the reference to your endpoint
+
+
+database is locked error: typically occurs when SQLite is unable to access the database because 
+it is already being accessed by another connection.
+
+My mistake: <a href="{{url_for('view_F',date = 'r.entry_date')}}.... '' in date= , this goes like this: date = r.entry_date
+
+
+SELECT log_date.entry_date, sum(food.protein), sum(food.carbohydrates), sum(food.fat), sum(food.calories) FROM log_date JOIN food_date ON food_date.log_date_id = log_date.id JOIN food on food.id = food_date.food_id GROUP BY log_date.id

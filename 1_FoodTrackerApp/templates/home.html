@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+ 
+ {% block body %}
+  <!--===============NAVBAR=====================-->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        
+      <div class="navbar-header"><!--Title header-->
+          <a class="navbar-brand" href="{{ url_for('index')}}">Food Tracker</a>
+        </div><!--================================-->
+        
+      <!--=============List of links================-->
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav"><!--Unsigned list-->
+            <li class="active"><a href="{{ url_for('index')}}">Home</a></li>
+            <li><a href="{{ url_for('food_F')}}">Add Food Item</a></li>
+          </ul>
+        </div><!--=================================-->
+  
+    </div>
+    </nav>
+   <!--===============NAVBAR=====================-->
+
+  
+   <div class="container theme-showcase col-sm-6 col-sm-offset-3" role="main">
+
+      <div class="row">
+        <div>
+          
+          <!--=================== DATE FORM =============================-->
+          <form method="POST" action="/"><!--POST Method:Send Information-->
+            
+            <div class="form-group">
+              <label for="new-day">New Day</label>
+              <input type="text" class="form-control" id="new-day" name="date" placeholder="YYYY-MM-DD">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form><!--=========== DATE FORM ==============================-->
+          
+          
+          <div class="page-header"></div><!-- Just a division -->
+          
+          <!--========= PANEL ====================== -->
+          {% for r in results %}
+          <div class="panel panel-primary">
+            
+            <div class="panel-heading"><!--Head-->
+              <h3 class="panel-title">{{r.pretty_date}}</h3>
+            </div>
+            
+            <div class="panel-body"><!--Body-->
+              <ul class="nav nav-pills" role="tablist">
+                <li><a>Protein: <span class="badge">{{r.protein}}</span></a></li>
+                <li><a>Carbohydates: <span class="badge">{{r.carbohydrates}}</span></a></li>
+                <li><a>Fat: <span class="badge">{{r.fat}}</span></a></li>
+                <li><a>Calories: <span class="badge">{{r.calories}}</span></a></li>
+                <li><a href="{{url_for('view_F',date = r.entry_date)}}" type="button" class="btn btn-link">View Detail</a></li>
+              </ul>
+            </div>
+            
+          </div><!--========= PANEL ====================== -->
+          {% endfor %}
+          
+        </div><!--End div Row-->
+      </div><!--End ROW-->
+    </div><!--End Class container-->
+    
+    {% endblock %}
