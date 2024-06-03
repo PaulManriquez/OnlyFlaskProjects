@@ -1,0 +1,26 @@
+{% macro show_links(user) %}<!--Generate the macro and expects the user to evaluate what user has login-->
+<ul class="nav navbar-nav">
+    <li class="active"><a href="{{ url_for('Index') }}">Home</a></li>
+    
+    {% if not user %}<!--If any user has login | show login section and enable to register -->
+    <li><a href="{{ url_for('Login') }}">Login</a></li>
+    <li><a href="{{ url_for('Register') }}">Register</a></li>
+    {% endif %}<!--=================================================-->
+
+    {% if user and user['admin'] == 0 and user['expert'] == 0 %}<!--Enable asking question if is not an expert or the admin -->
+    <li><a href="{{ url_for('Ask') }}">Ask Question</a></li>
+    {% endif %}<!--=============================================================================================-->
+    
+    {% if user and user['expert'] == 1 %}<!--If the user login is an expert, you can asnwer questions -->
+    <li><a href="{{ url_for('Unanswered') }}">Answer Questions</a></li><!--Check the unanswered questions-->
+    {% endif %}<!--===================================================================================-->
+
+    {% if user and user['admin'] == 1 %}<!--If the user login is the admin | enable the setup configuration -->
+    <li><a href="{{ url_for('Users') }}">User Setup</a></li>
+    {% endif %}<!--=========================================================================================-->
+
+    {% if user %}<!--If a user has login | enable the section to logut-->
+    <li><a href="{{ url_for('Logout')}}">Logout</a></li>
+    {% endif %}<!--===================================================-->
+</ul>
+{% endmacro %}
