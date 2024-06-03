@@ -47,7 +47,11 @@ Ensure that {url_for('view_F'... ->viewF is the name of the reference to your en
 database is locked error: typically occurs when SQLite is unable to access the database because 
 it is already being accessed by another connection.
 
-My mistake: <a href="{{url_for('view_F',date = 'r.entry_date')}}.... '' in date= , this goes like this: date = r.entry_date
+My mistake: <a href="{{url_for('view_F',date = 'r.entry_date')}}.... '' in date= , this goes like this: date = r.entry_date, without ('')
 
 
-SELECT log_date.entry_date, sum(food.protein), sum(food.carbohydrates), sum(food.fat), sum(food.calories) FROM log_date JOIN food_date ON food_date.log_date_id = log_date.id JOIN food on food.id = food_date.food_id GROUP BY log_date.id
+* To avoid problems in the evaluation of if statements, prioritize the order of the conditions example:
+{% if user and user['expert'] == 1 %}
+   <li><a href="#">Answer Questions</a></li>
+{% endif %}
+// In this example im checking first if the user exist and then if accomplish certain conditions, it will be very diferent if we twist the order
