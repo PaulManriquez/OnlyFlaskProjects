@@ -1,0 +1,41 @@
+{% extends './layout.html' %}
+
+<!--Title of the page-->
+{% block title %} Login {% endblock %}
+
+<!--CSS style-->
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+{% endblock %}
+
+<!--Block body of the page-->
+{% block body %}
+<form class="form-signin" action="/login", method="POST">
+    <img class="mb-4" src="{{ url_for('static',filename='img/flask.png') }}" alt="" width="100" height="80">
+    <!--Show flash messages if there are-->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <br> 
+        {% for message in messages %}
+          <div class="alert alert-primary alert-dismissible" role="alert">
+              <strong>{{ message }}</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating"><!--===============================================Input USER NAME-->
+      <input type="text" class="form-control" id="username" name="username" placeholder="User Name">
+      <label for="username">Username</label>
+    </div><!--===================================================================================-->
+
+    <div class="form-floating"><!--================================================INPUT PASSWORD-->
+      <input type="password" class="form-control" name="password" placeholder="Password">
+      <label for="password">Password</label>
+    </div><!--===================================================================================-->
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button><!--BTN SIGN IN-->
+</form>
+{% endblock %}
