@@ -1,0 +1,11 @@
+*An entity is a table beacuse it can holds multiple instances:
+similarly like a class and instances of this, the instances in this case will be the data of the table
+
+* SQL statements ussually are written in UpperCase to distinguish between data and SQL sentences
+* All strings must be quoted so that the query parser can distinguish words in the string from SQL keywords.
+* Imagine the reddit or pinterest web page, each link propmted to you is show based on popularity and time, 
+  using LIMIT and OFFSET keywords, to filter data and retrieve it more faster. 
+
+* https://sqlbolt.com/lesson/filtering_sorting_query_results
+
+https://sqlbolt.com/lesson/select_queries_review
