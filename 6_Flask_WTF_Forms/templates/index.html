@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+
+    <h1> Login Form </h1>
+    <form method="POST" action="/">
+        {{ form.csrf_token }}
+        
+        <!--===================================================================================-->
+        {{ form.username.label }} <!--Label username:Takes the string that was in StringField()-->
+        {{ form.username }}<!--Entry username-->
+        <ul><!--List and show possible erros for the username-->
+            {% for error in form.username.errors %}
+                <li> {{ error }}</li>
+            {% endfor %}
+        </ul>
+        <!--===================================================================================-->
+        {{ form.password.label }}<!--Label password -->
+        {{ form.password }}<!--Entry password -->
+        <ul><!--List and show possible erros for the password-->
+            {% for error in form.password.errors %}
+                <li> {{ error }}</li>
+            {% endfor %}
+        </ul>
+        <!--===================================================================================-->
+        <!--===================================================================================-->
+        {{ form.age.label }}<!--Label Age -->
+        {{ form.age }}<!--Entry Age -->
+        <ul><!--List and show possible erros for the age-->
+            {% for error in form.age.errors %}
+                <li> {{ error }}</li>
+            {% endfor %}
+        </ul>
+        <!--===================================================================================-->
+        {{ form.yesno.label }}<!--Label yesno -->
+        {{ form.yesno }}<!--Entry Age -->
+        <ul><!--List and show possible erros for the age-->
+            {% for error in form.yesno.errors %}
+                <li> {{ error }}</li>
+            {% endfor %}
+        </ul>
+        <!--===================================================================================-->
+        {{ form.email.label }}<!-- Label email -->
+        {{ form.email }}<!-- Entry email -->
+        <ul><!--List and show possible erros for the age-->
+            {% for error in form.email.errors %}
+                <li> {{ error }}</li>
+            {% endfor %}
+        </ul>
+        <!--===================================================================================-->
+        <button>Login</button>
+    </form>
+    
+</body>
+</html>

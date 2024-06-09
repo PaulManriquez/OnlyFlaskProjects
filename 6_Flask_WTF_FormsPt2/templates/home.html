@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Form</title>
+    <!--Personal stylee sheet -->
+    <link rel="stylesheet" href="static/style.css">
+    <!-- Boostrap stylee sheet -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <form method="POST">
+        <table>
+            <!--============= My table ================-->
+            <tr><!--Table ROW-->
+                <td colspan="2"><h2>Please fill the form</h2></td><!--Table Data-->
+            </tr>
+            <tr>
+                <td>{{form.user_name.label}}</td>
+                <td>{{form.user_name()}}
+                    <ul><!-- Listing of Errors -->
+                    {% for error in form.user_name.errors %}
+                        <li>{{error}}</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>{{form.user_password.label}}</td>
+                <td>{{form.user_password()}}</td>
+            </tr>
+            <tr>
+                <td>{{form.user_time.label}}</td>
+                <td>{{form.user_time(type="date")}}</td>
+            </tr>
+            <tr>
+                <td>{{form.user_phone.label}}</td>
+                <td>{{form.user_phone()}}</td>
+            </tr>
+            <tr>
+                <td>{{form.user_GetImail.label}}</td>
+                <td>{{form.user_GetImail()}}</td>
+            </tr>
+            
+            <tr>
+                <td>{{form.user_Aboutme.label}}</td>
+                <td>{{form.user_Aboutme()}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;"><button>Submit</button></td>
+            </tr>
+            <!--========================================-->
+        </table>
+    </form>
+</body>
+</html>

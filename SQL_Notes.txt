@@ -8,4 +8,19 @@ similarly like a class and instances of this, the instances in this case will be
 
 * https://sqlbolt.com/lesson/filtering_sorting_query_results
 
-https://sqlbolt.com/lesson/select_queries_review
+* Primary key: is a field in a table that uniquely identifies each row in that table
+* Foregin key: is used to link two tables together. It acts as a cross-reference 
+	       between tables because it references the primary key of another table, 
+	       thus establishing a relationship between the two tables 
+
+* Quote: The objective of being a primary key is that that row must to be unique, thus if you use
+  a unique identifier will acomplish the rule, but is standarized to be autoincrement and unique
+
+* INNER JOIN: Returns only the rows that have matching values in both tables being joined.
+	      it focuses on the intersection of data between two tables.
+
+*https://sqlbolt.com/lesson/select_queries_with_joins
+
+* Like: name LIKE '%s' -> finish in s | name LIKE 's%' -> begin with s
+
+https://sqlbolt.com/lesson/select_queries_with_joins
