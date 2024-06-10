@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Form</title>
+    <!--Personal stylee sheet -->
+    <link rel="stylesheet" href="static/style.css">
+    <!-- Boostrap stylee sheet -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <form method="POST">
+        <table>
+            <!--============= My table ================-->
+            <tr><!--Table ROW-->
+                <td colspan="2"><h2>Sender Email Message App </h2></td><!--Table Data-->
+            </tr>
+            <!--=================================-->
+            <tr>
+                <td>{{form.user_Subject.label}}</td>
+                <td>{{form.user_Subject()}}</td>
+            </tr>
+            <!--=================================-->
+            <tr>
+                <td>{{form.user_Message.label}}</td>
+                <td>{{form.user_Message()}}</td>
+            </tr>
+            <!--=================================-->
+            <tr>
+                <td colspan="2" style="text-align: center;"><button>Send Email</button></td>
+            </tr>
+            <!--========================================-->
+        </table>
+    </form>
+</body>
+</html>

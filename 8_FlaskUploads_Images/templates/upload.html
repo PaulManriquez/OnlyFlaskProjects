@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <!-- Boostrap stylee sheet -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!--Personal stylee sheet -->
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <!--================== This is my form ===========================-->
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <table>
+            <tr><!--Table ROW-->
+                <td><h2>Upload your image here</h2></td>
+            </tr>
+            <tr>
+                 
+                <td>    
+                    <label for="fileInput">Choose a file:</label>
+                    <input type="file" name="Filename" id="fileInput">
+                </td>
+                
+            </tr> 
+            <tr>   
+                
+                <td colspan="2">    
+                    <input type="submit" value="Upload" class="btn btn-primary full-width">
+                </td>
+                
+            </tr>    
+        </table>
+    </form>
+    <!--==============================================================-->
+</body>
+</html>
