@@ -14,6 +14,8 @@ Virtual environment
 
 9) export FLASK_APP = (anotherFile.py) (You can change the name of the file to run another flask instance in terminal mode)
 
+Run the aplication in debug mode 
+* set FLASK_ENV=development | export Flask_ENV = development > flask run
 
 ============================
       HTTP methods

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <!--=========== FORM =========================-->
+    <form action="/login" method="POST">
+        Username <input type="text" name="usernameF">
+        Remember login <input type="checkbox" name = "rememberme">
+                <button>Submit</button>
+    </form>
+
+    <!--Show the possible messages-->
+    {% with messages = get_flashed_messages() %} <!--With:defines a specific block to work inside-->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %} 
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+</body>
+</html>
