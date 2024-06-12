@@ -25,6 +25,7 @@ PUT: Update data
 DELETE: Delete data
 PATCH / OPTIONS / HEAD
 ===========================
+Split the windows development: windows + row
 
 Quotes:
 
