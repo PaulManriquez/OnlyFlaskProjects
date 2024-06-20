@@ -1,0 +1,15 @@
+{% extends "base.html" %} <!-- Inheritence -->
+{% block title %} Login Page {% endblock %}
+
+<!--Body-->
+{% block content%}
+    
+    <h1>Login Page</h1>
+    
+    <form method="POST" action="/login">
+        <input type="text" name="username" placeholder="Introduce your user name"> <br>
+        <input type="password" name="password" placeholder="Introduce your password"> <br>
+        <input type="submit" name="Login">
+    </form>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %} <!-- Inheritence -->
+{% block title %} Showing list content {% endblock %}
+
+{% block content%}<!-- Block body -->
+    <h1> Showing list </h1>
+    <ul>
+        {%for element in MyList %}
+            <li>{{ element }}</li>
+        {% endfor %}
+    </ul>
+    <p>{{Sometext | upper}}</p>
+    <p>{{Sometext | lower}}</p>
+    <p>{{Sometext | title}}</p>
+    <p>
+        <a href="{{ url_for('ClickMe')}}">Click Me</a>
+    </p>
+{% endblock %}

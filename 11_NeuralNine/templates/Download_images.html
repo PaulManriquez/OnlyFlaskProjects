@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Download Images {% endblock %}
+
+{% block content %}
+    <h1>Download Images</h1>
+    {% if ImagesL %}
+        <ul>
+            {% for image in ImagesL %}
+                <li>
+                    <!-- {{ image }} -->
+                    <img src="{{ url_for('send_file', filename=image) }}" alt="{{ image }}" style="max-width: 50px; max-height: 50px;">
+                    <a href="{{ url_for('download_file', filename=image) }}"> Download </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No images available for download.</p>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('UploadFile') }}">Upload another image</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %} <!-- Inheritence -->
+{% block title %} Upload File {% endblock %}
+
+{% block content %}
+    <h1>Upload file</h1>
+    <form method="POST" action="{{ url_for('UploadFile') }}" enctype="multipart/form-data">
+        <input type="file" name="MyImage" accept="image/*">
+        <input type="submit" value="UploadFile">
+    </form>
+{% endblock %}

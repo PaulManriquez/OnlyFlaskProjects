@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %} Display Uploaded Image {% endblock %}
+
+{% block content %}
+    <h1>Uploaded Image</h1>
+    <img src="{{ url_for('send_file', filename=filename) }}" alt="Uploaded Image"> <!-- To show the image we need another endpoint to get the reference -->
+    <br>
+    <a href="{{ url_for('UploadFile') }}">Return to Upload another image</a>
+{% endblock %}
