@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to your tasks </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+
+    
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bolder" href="#">My tasks administration:</a>
+            <span>Welcome {{session['name']}} {{session['surnames']}} (Admin)<a href="{{url_for('Logout')}}" class="mx-3">Logout</a></span>
+        </div>
+    </nav>
+
+    <!--Container-->
+    <div class="container">
+        <div class="card mt-3 w-25 mx-auto d-block">
+            <div class="card-body d-flex">
+                <div style="padding: 1px;">Add task:</div>
+                <img src="{{url_for('static', filename='images/plus.png')}}" width="25" class="mx-auto d-block" data-bs-toggle="modal" data-bs-target="#task-modal" style="padding: 1px;"> 
+                <div style="padding: 1px;">Add new student:</div>
+                <img src="{{url_for('static', filename='images/add-group.png')}}" width="25" class="mx-auto d-block" data-bs-toggle="modal" data-bs-target="#group-modal" style="padding: 1px;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Task-->
+    <div class="modal fade" id="task-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">New Task</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/newTask" method="POST">
+                    <label>Title</label>
+                    <input type="text" class="form-control mb-3" name="title">
+                    <label>Description</label>
+                    <textarea class="form-control mb-3" rows="3" name="description"></textarea>
+
+                    <label>Assign to</label>
+                    <select class="form-control mb-3" name="assigned_to">
+                        {% for user in users_task %}
+                                            <!-- ID           Name -->
+                            <option value="{{ user[0] }}">{{ user[1] }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <button type="submit" class="btn btn-primary w-100">Save</button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Modal Group-->
+    <div class="modal fade" id="group-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">New User</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form action="/createAccount" method="POST">
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Name</label>
+                            <input type="text" class="form-control mb-3" name="Name">
+                        </div>
+
+                        <div class="col-6">
+                            <label>Surname</label>
+                            <input type="text" class="form-control mb-3" name="Surname">
+                        </div>
+
+                        <label>Email</label>
+                        <input type="email" class="form-control mb-3" name="Email">
+                        
+                        <label>Password</label>
+                        <input type="password" class="form-control mb-3" name="Password">
+
+                        <button type="submit" class="btn btn-primary w-100">Save</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        </div>
+    </div>
+   
+    <div></div>
+
+
+    <!--DISPLAYING TASK ASSIGNNED AND STATUS-->        
+    <div class="container">
+        <h2 style="padding: 22px;">Your Tasks Assigned to your students</h2>
+        <div class="grid">
+            <div class="grid-item2">Name</div>
+            <div class="grid-item2">Surname</div>
+            <div class="grid-item2">Title</div>
+            <div class="grid-item2">Description</div>
+            <div class="grid-item2">Answer Student</div>
+            <div class="grid-item2">Status</div>
+            <div class="grid-item2">Actions</div> <!-- Add a header for Actions -->
+    
+            {% for task in All_Current_Tasks %}
+                <div class="grid-item">{{ task[0] }}</div>
+                <div class="grid-item">{{ task[1] }}</div>
+                <div class="grid-item">{{ task[2] }}</div>
+                <div class="grid-item">{{ task[3] }}</div>
+                <div class="grid-item">{{ task[4] }}</div>
+                <div class="grid-item">{% if task[5] == 1 %} <div class="delivStatus">Delivered</div> {% else %} <div class="delivStatus2">No delivered</div> {% endif %} </div>
+                <div class="grid-item"><!--===========================================================================================-->
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#edit-modal-{{ task[6] }}" data-task-id="{{ task[6] }}">Add comment</button>
+                    <div style="padding: 3px;"></div>
+                    
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete-modal-{{ task[6] }}" data-task-id="{{ task[6] }}">Delete</button>
+                    <div style="padding: 3px;"></div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!--MODAL FOR ADD COMMENT BUTTON AND DELETE  -->
+    {% for task in All_Current_Tasks %}
+    <!--ADD COMMENT-->
+    <div class="modal fade" id="edit-modal-{{ task[6] }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Comments to task Panel</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form action="/EditTask" method="POST">
+                    <input type="hidden" name="task_id" value="{{ task[6] }}">
+                    <div class="row">
+                        <label>Comments to task:</label>
+                        <textarea class="form-control mb-3" rows="3" name="ComTask"></textarea>
+                        
+                        <label style="text-align: center;">Delivered</label>
+                        <div class="checkbox-container">
+                            <input type="checkbox" name="Status" class="CheckBoxD" checked>
+                        </div>
+                        <div style="padding: 5px;"></div>
+                        <button type="submit" class="btn btn-primary w-100">Save</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <!--DELETE TASK-->
+    <div class="modal fade" id="delete-modal-{{ task[6] }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete task</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form action="/deleteTask" method="POST">
+                    <input type="hidden" name="task_id" value="{{ task[6] }}">
+                    <div class="row">
+
+                        <label style="text-align: center;">Are you shure to delete task?</label>
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+        </div>
+    </div>
+
+    {% endfor %}
+    
+
+</body>
+</html>

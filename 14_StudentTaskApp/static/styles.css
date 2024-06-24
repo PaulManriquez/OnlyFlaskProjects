@@ -1,0 +1,58 @@
+.container {
+    text-align: center;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Defines 6 columns of equal width */
+    grid-gap: 10px; /* Spacing between grid items */
+    padding: 10px; /* Padding for the grid container */
+    border: 1px solid #ddd; /* Optional border */
+  }
+  
+  .grid-item {
+    padding: 5px; /* Padding for each grid item */
+    border: 1px solid #eee; /* Optional border for each item */
+    text-align: center; /* Center content within each item */
+  }
+
+  .grid-item2{
+    background-color: rgb(29, 88, 116); 
+    color: white;
+  }
+
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Update to 7 columns to accommodate Actions */
+    gap: 10px;
+    padding: 10px;
+}
+
+.grid-item, .grid-item2 {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.CheckBoxD {
+    width: 20px; /* Adjust the size of the checkbox */
+    height: 20px; /* Adjust the size of the checkbox */
+}
+
+.delivStatus{
+  background-color: rgb(127, 226, 127);
+}
+
+.delivStatus2{
+  background-color: rgb(243, 129, 129);
+}
