@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="static/styles.css"> <!-- Link to the CSS file -->
+    
+</head>
+<body>
+
+    <h2 class="TitleApp">Your task to do:</h2>
+
+    <div><!-- Displaying tasks to do-->
+        <ul>
+            {% for idx, todo in todos|enumerate %}
+            <!-- Custom function to enumerate and use it with Jinja2 -->
+            {% if todo['Done'] == False %}
+            <li>
+                <div class="DisplayTaskTodo">
+
+                    <form action="{{ url_for('Edit', index=idx) }}" method="POST" style="display: inline;">
+                        {{ todo['Task'] }}
+                        <button type="submit">Edit</button>
+                    </form>
+
+                    <form id="checkForm{{ idx }}" action="{{ url_for('Check', index=idx) }}" method="POST" style="display: inline;">
+                        <label for="option{{ idx }}">Completed:</label>
+                        <input type="checkbox" id="option{{ idx }}" name="completed" value="1" onclick="document.getElementById('checkForm{{ idx }}').submit();">
+                    </form>
+
+                    <form action="{{ url_for('Delete', index=idx) }}" method="POST" style="display: inline;">
+                        <button type="submit" style="background-color: rgb(255, 0, 0); color: white;">Delete task</button>
+                    </form>
+                    
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    
+    
+    <!-- Add a new Task -->
+    <div class="form-container">
+        <form action="{{ url_for('Add') }}" method="POST">
+            <textarea class="form-control mb-3" rows="3" name="Todo"></textarea>
+            <div class="button-container">
+                <button type="submit">Add todo task</button>
+            </div>
+        </form>
+    </div>
+
+    <div>
+    
+    
+    <!--DISPLAY THE COMPLETED TASKS -->
+    <h2 class="TitleApp">Completed</h2>
+        <ul>
+            {% for idx,todo in todos|enumerate %}
+                {% if todo['Done'] == True %}
+                <li>
+                    <form id="checkForm{{ idx }}" action="{{ url_for('Check', index=idx) }}" method="POST" style="display: inline;">
+                        {{todo['Task']}}
+                        <button type="submit">Return to todo</button>
+                        <div style="padding: 2px;"></div>
+                    </form>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>    
+    </div>
+    
+</body>
+</html>

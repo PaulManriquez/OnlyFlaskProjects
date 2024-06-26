@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+
+    <div>
+        <h2>Edit your task number {{index}}</h2>
+        <form action="{{ url_for('FinishEdit', index=index) }}" method="POST">
+            <textarea class="form-control mb-3" rows="3" name="TodoEdit">{{ todo["Task"] }}</textarea>
+            <button type="submit">Finish</button>
+        </form>
+    </div>
+    
+</body>
+</html>

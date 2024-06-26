@@ -1,0 +1,30 @@
+
+.task-list {
+    overflow: hidden; 
+    padding: 0px;
+}
+
+.add-task-button {
+    margin-top: 10px;
+}
+
+.form-container {
+    margin-top: 20px;
+}
+.form-control {
+    width: 100%;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.TitleApp{
+    text-align:  center;
+}
+
+

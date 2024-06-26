@@ -16,6 +16,7 @@
         <div class="container-fluid">
             <a class="navbar-brand fw-bolder" href="#">My tasks administration:</a>
             <span>Welcome {{session['name']}} {{session['surnames']}} (Admin)<a href="{{url_for('Logout')}}" class="mx-3">Logout</a></span>
+            <a href="{{url_for('CreateAccount')}}" class="mx-3">Create a new account</a>
         </div>
     </nav>
 
@@ -24,9 +25,9 @@
         <div class="card mt-3 w-25 mx-auto d-block">
             <div class="card-body d-flex">
                 <div style="padding: 1px;">Add task:</div>
-                <img src="{{url_for('static', filename='images/plus.png')}}" width="25" class="mx-auto d-block" data-bs-toggle="modal" data-bs-target="#task-modal" style="padding: 1px;"> 
+                <img src="{{url_for('static', filename='images/plus.png')}}" width="45" class="mx-auto d-block" data-bs-toggle="modal" data-bs-target="#task-modal" style="padding: 1px;"> 
                 <div style="padding: 1px;">Add new student:</div>
-                <img src="{{url_for('static', filename='images/add-group.png')}}" width="25" class="mx-auto d-block" data-bs-toggle="modal" data-bs-target="#group-modal" style="padding: 1px;">
+                <img src="{{url_for('static', filename='images/add-group.png')}}" width="45" class="mx-auto d-block" data-bs-toggle="modal" data-bs-target="#group-modal" style="padding: 1px;">
             </div>
         </div>
     </div>

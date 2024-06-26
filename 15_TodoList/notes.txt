@@ -1,0 +1,8 @@
+# Define a list of items
+fruits = ['apple', 'banana', 'cherry']
+
+# Use enumerate to get both index and value
+for index, fruit in enumerate(fruits):
+    print(index, fruit)
+
+enumerate unpacks the index where is stored the information and assigns to (index) variable
