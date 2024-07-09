@@ -31,9 +31,9 @@
                     <td class="TH2">{{ product }}</td> 
                     <td class="TH2"><img src="/static/Images/{{product}}.png" alt="add to cart icon" class="ItemsImage"> </td>  
                       
-                    {% if quantity >= 15 %}
+                    {% if quantity >= 30 %}
                         <td class="TH2 greenBackground">{{ quantity }}</td>
-                    {% elif quantity >= 7 and quantity < 15 %}
+                    {% elif quantity >= 15 and quantity < 30 %}
                         <td class="TH2 yellowBackground">{{ quantity }}</td>
                     {% else %}
                         <td class="TH2 redBackground">{{ quantity }}</td>  

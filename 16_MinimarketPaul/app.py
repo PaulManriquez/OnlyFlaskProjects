@@ -12,37 +12,36 @@ app = Flask(__name__)
 app.secret_key = 'SECRETKEY'
 #======================================================
 #========== Products in the store =====================
-ProductsInCart = {
-    'chips': 0,
-    'lays':0,
-    'cocacola':0,
-    'pepsi':0,
-    'gamesa':0,
-    'marinela':0,
-    'television':0,
-    'fan':0
-}
-Prices = {
-    'chips': 17,
-    'lays':19,
-    'cocacola':22.5,
-    'pepsi': 12.37,
-    'gamesa':11,
-    'marinela':9.5,
-    'television':2700,
-    'fan':300
-}
-#Stock available to buy
-InStock = {
-    'chips': 10,
-    'lays':20,
-    'cocacola': 5,
-    'pepsi': 7,
-    'gamesa':8,
-    'marinela': 1,
-    'television':3,
-    'fan': 2
-}
+def load_data():
+    try:
+        db = get_db_connection()
+    
+        if not db:
+            raise Exception("Error in database connection")
+        
+        cur = db.cursor()
+        cur.execute('SELECT product_name, stock, price FROM products') 
+        data = cur.fetchall()
+        
+        cur.close()
+        close_db_connection(db)
+                            #Product|Fill each product in cart starting from 0 
+        products_in_cart =  {row[0]: 0 for row in data}
+                            #Product|Stock
+        in_stock =          {row[0]: row[1] for row in data}
+                            #Product|Price 
+        prices =            {row[0]: row[2] for row in data}
+        
+        print(f'<------------ App Starting ------------>')
+        print(products_in_cart,in_stock,prices)
+
+        return products_in_cart, prices, in_stock #<--- Return the original dictionaries 
+    
+    except Exception as e:
+        return f'Error:{e}'
+
+#<><><><> Load data into dictionaries <><><><>
+ProductsInCart, Prices, InStock = load_data()
 
 def DisplayCurrentStock():
     print('<--- Displaying Current Stock --->')
@@ -287,7 +286,7 @@ def ClearCart():
 #=== Pay process endpoint
 @app.route('/pay',methods=['POST'])
 def PayCart():
-
+    global ProductsInCart, Prices, InStock
     try:
         TotalTopay = CurrentTotal()
         #If total to pay equals 0 there is no ticket to process
@@ -345,11 +344,18 @@ def PayCart():
             
         data = (customer_id,name,TotalTopay,file_content.read()) #Touple data to insert in the data base 
 
-        #============== Insert a new user in the data base 
+        #============== Inser the data of the sale 
         cur = db.cursor() #Point to the data base
         sqlQuery = 'INSERT INTO sales (customer_id,name,total,receipt) VALUES (%s,%s,%s,%s)'
         cur.execute(sqlQuery,data) # Write the query with parameterized input
-        db.commit()#<--- Insert the new user in the data base 
+        db.commit()#<--- Insert the new data sell in the data base
+        #============== Update the Stock
+        for item in ProductsInCart:
+            sqlQuery = 'UPDATE products SET stock = %s WHERE product_name = %s'
+            cur.execute(sqlQuery,(InStock[item],item))
+            db.commit()#<--- Update the stock in data base 
+
+        ProductsInCart, Prices, InStock = load_data() # <-- Update data in the app 
         cur.close()# <-- close cur connection 
         close_db_connection(db)# <-- close data base connection
         #===============   
@@ -495,8 +501,7 @@ def MyPurchases():
 
         for item in receipts:
             print(item)          
-
-        #return render_template('sells.html',result=result,receipts=receipts)
+            
         return render_template('MyPurchases.html',receipts=receipts)
     except Exception as e:
         return f'Error:{e}'
