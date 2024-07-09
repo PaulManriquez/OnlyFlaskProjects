@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Purchases</title>
+    <!--Fonts Styles -->
+    {% include 'fontsStyles.html' %}
+</head>
+<body>
+
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+
+    <!--Display the products of your cart-->
+    <div class="Flexcol">
+        <div class="DisplaySells2">
+
+            <div>
+                <h2 class="Header blackTextBorder">My Purchases</h2>
+            </div>
+
+            <table>
+                <tr class="table-header">
+                    <th class="TH1">Tickets</th>
+                </tr>
+                
+                {% for receipt in receipts %}
+                <tr class="table-body">
+                    <td class="TH2"><div class="receipt">{{ receipt }}</div></td> 
+                </tr>
+                {% endfor %}
+                
+            </table>
+            
+        </div>
+    </div>
+
+</body>
+</html>

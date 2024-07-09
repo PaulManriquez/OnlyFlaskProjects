@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: space-between; /* Space between logo and navigation links */
     align-items: center; /* Center items vertically */
-    background-color: #db3c3c; /* Optional: Background color for the nav bar */
+    background-color: #789eaf;; /* Optional: Background color for the nav bar */
     padding: 20px 30px;
     border-radius: 20px;
     border: 3px solid black;
@@ -71,7 +71,7 @@ body {
     border: 3px solid black;
     width: 70%;
     margin-top: 20px;
-    background-color: #db3c3c;
+    background-color: #789eaf;
 }
 
 .bestSellers{
@@ -96,7 +96,7 @@ body {
     border-radius: 20px;
     border: 3px solid black;
     width: 30%;
-    background-color: #db3c3c;
+    background-color: #789eaf;
 
 }
 
@@ -113,7 +113,7 @@ body {
     border-radius: 25px;
     border: 3px solid black;
     width: 25%;
-    background-color: #db3c3c;
+    background-color: #789eaf;
 
 }
 
@@ -157,7 +157,7 @@ body {
     display: flex;
     justify-content: center;
     
-    background-color: #db3c3c;
+    background-color: #789eaf;
     width: 35%;
     padding: 15px 20px;
     border-radius: 15px;
@@ -250,7 +250,7 @@ body {
 
 /*Red background */
 .redBlack{
-    background-color: #db3c3c;
+    background-color: #789eaf;
     text-align: center;
     margin-left: 10px;
     border-radius: 15px;
@@ -355,7 +355,7 @@ body {
     text-align: center;
     margin-top: 27px;
     
-    background-color: #db3c3c;
+    background-color: #789eaf;
     width: 35%;
     padding: 10px 20px;
     border-radius: 15px;
@@ -446,7 +446,7 @@ body {
 .DisplayProduct2{
     margin-top: 50px;
     
-    background-color: #db3c3c;
+    background-color: #789eaf;
     width: auto;
     height: 90px;
     
@@ -462,7 +462,7 @@ body {
     flex-wrap: wrap;
     margin-top: 10px;
     
-    background-color: #db3c3c;
+    background-color: #789eaf;
     width: 720px;
     height: auto;
     
@@ -480,7 +480,7 @@ body {
 }
 
 .FormTotal{
-    background-color: #db3c3c;
+    background-color: #789eaf;
 }
 
 .MyCartProductTitle{
@@ -511,7 +511,7 @@ body {
     border: 3px solid #000000;
     padding: 20px;
     border-radius: 10px;
-    background-color: #db3c3c;
+    background-color: #789eaf;
 }
 
 .TotalToPay2 {
@@ -552,7 +552,7 @@ body {
     flex-wrap: wrap;
     margin-top: 10px;
     
-    background-color: #db3c3c;
+    background-color: #789eaf;
     width: 350px;
     height: 250px;
     
@@ -581,8 +581,26 @@ body {
     padding: 10px 20px;
     border-radius: 15px;
     border: 3px solid black;
+}
+
+.DisplaySells2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    text-align: center;
+    margin-top: 10px;
+    
+    background-color: #789eaf;
+    width: 700px;
+    height: auto;
+    
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
 
 }
+
 
 .table-header {
     font-weight: bold; 

@@ -113,9 +113,13 @@ def LoginPage():
                 session['NAME'] = result[1]
                 session['MAIL'] = result[2]
                 session['ISADMIN'] = result[4] #Is admin equals to 1 otherwise is 0 
-                session['DELETED'] = result[5]
+                session['DELETED'] = result[5] #Status
 
-                return redirect(url_for('MainPage')) #<-- Login successful, return to main page 
+                #If the user was deleted send it the status 
+                if result[5] == 1: 
+                    return render_template('Login.html',message='This account was deleted')#Account deleted        
+                else:
+                    return redirect(url_for('MainPage')) #<-- Login successful, return to main page 
             
             return render_template('Login.html',message='Wrong password')#Wrong password 
             
@@ -443,6 +447,43 @@ def UsersManage():
         except Exception as e:
             return f'Error:{e}'      
 
+
+#=== Purchases for the user only
+@app.route('/mypurchases',methods=['GET'])
+def MyPurchases():
+    print('<------------ My Purchases Page ------------>')
+    try:
+        db = get_db_connection()
+
+        if not db: #If there is an error in the data base connection | Return 
+            return f'Error in data base'
+        
+        #============== Retrieve Data from the data base 
+        cur = db.cursor() #Point to the data base
+        sqlQuery = 'SELECT receipt FROM sales WHERE customer_id = %s'
+        cur.execute(sqlQuery,(session['ID'],)) # Write the query with parameterized input
+        result = cur.fetchall() # <-- Return a tuple list with the data 
+        cur.close()# <-- close cur connection 
+        close_db_connection(db)# <-- close data base connection
+        #===============================================================
+
+        receipts = []
+        for tuple in result:
+            if isinstance(tuple[0],bytes):     
+                text = tuple[0]
+                text=text.decode('utf-8')
+                #text = str(text)
+                receipts.append(text)
+
+        for item in receipts:
+            print(item)          
+
+        #return render_template('sells.html',result=result,receipts=receipts)
+        return render_template('MyPurchases.html',receipts=receipts)
+    except Exception as e:
+        return f'Error:{e}'
+
+    
 
 
 if __name__ == '__main__':
