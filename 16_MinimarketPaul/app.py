@@ -3,6 +3,7 @@ from DataBaseConnection import get_db_connection,close_db_connection #Data base 
 from HashPassword import hash_password,check_password
 from TextFunctions import standardize_length
 from datetime import datetime
+import random
 import io
 
 
@@ -72,7 +73,20 @@ def ClearTheCart():
 @app.route('/')
 def MainPage():
     
-    return render_template('MainPage.html')
+    #=== Random Display
+    Flag = False
+    KeysStockGreater1 = [ key for key in InStock.keys() if InStock[key] >=1 ] #Get only In stock products
+    if len(KeysStockGreater1) >=5:
+        Flag = True
+        randomKeys = random.sample(KeysStockGreater1,5)
+    elif len(KeysStockGreater1) >=1 and len(KeysStockGreater1) < 5:
+        Flag = True
+        randomKeys = random.sample(KeysStockGreater1,len(KeysStockGreater1))
+    else:
+        randomKeys = []   
+    #======================================================================================================           
+    
+    return render_template('MainPage.html',randomKeys=randomKeys,Flag=Flag)
 
 #==== LOGIN USER | ENDPOINT 
 @app.route('/login',methods=['GET','POST'])
@@ -215,7 +229,11 @@ def AddtoCart():
             ProductsInCart[ProductName] +=1 #Add product to your cart
             InStock[ProductName]-=1 #Update the stock available 
             DisplayCurrentCart()
-            return render_template(Page,message=True)
+            if Page == 'MainPage.html':
+                flash(f'New product added: {ProductName}')
+                return redirect(url_for('MainPage'))
+            else:
+                return render_template(Page,message=True)
         else:
             flash(f'No stock available for product: {ProductName}')
             DisplayCurrentCart()

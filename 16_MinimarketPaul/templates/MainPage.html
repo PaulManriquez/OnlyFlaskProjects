@@ -20,7 +20,50 @@
     {% include 'Leftlinks.html' %}
 
     <div class="RightContainer">
-        <h2 class="bestSellers blackTextBorder"> Best sellers!</h2>
+        <h2 class="bestSellers blackTextBorder"> Check out products!</h2>
+
+        <!--If there are flash messages-->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <meta http-equiv="refresh" content="2;url={{ url_for('MainPage') }}">
+                    <li><h3 class="Header blackTextBorder greenBlack">{{ message }}</h3></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <div class="displayCenter">
+            <div class="DisplayProduct1 ">
+                <div class="Displayer1">
+                    <!--Displaying random products -->
+                    {%if Flag %}
+                    {% for key in randomKeys %}
+                    <div class="ProductContainer1">
+                        <form action="/addtocart" method="POST">
+                                                    <!--Sending the name of the product and the price-->
+                            <input type="hidden" name="Name" value="{{key}}">
+                                                    <!--Sending where comes the product to render again the page-->
+                            <input type="hidden" name="Page" value="MainPage">
+                            <img src="/static/Images/{{key}}.png" alt="Store Logo" class="ItemsImage">
+
+                            <!--If There is a session active and is not the addmin, you can buy-->
+                            {% if session['NAME'] and session['ISADMIN'] == 0 %}
+                            <button type="submit" class="BtnAddCart">
+                                <img src="/static/Images/add-to-cart.png" alt="add to cart icon" class="AddToCart">
+                            </button>
+                            {% endif %}
+                        </form>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                </div>
+            </div>  
+        </div>    
+           
+
     </div>
 
  </div>
