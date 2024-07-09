@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+
+    <!-- MainStyles -->
+    <link rel="stylesheet" href="/static/styles.css">
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <!---->
+
+</head>
+<body>
+    
+    
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+
+    <div class="MainContainerLogin">
+
+        <div class="LoginFormContainer">
+            <!--=============== FORM ==============-->
+            <form action="/newAccount" method="POST">
+    
+                <div class="TitleDiv">
+                    <h3 class="H3 blackTextBorder">New account </h3>
+                    <h3 class="H3"> <span class="SP1 blackTextBorder">(Fill your data)</span></h5>
+                </div>
+                
+                <div class="InLine BlueBlack">
+                    <label>Name</label>
+                    <input type="text" class="Text" name="name">
+                </div>
+
+                <div class="InLine BlueBlack">
+                    <label>Email</label>
+                    <input type="email" class="Email" name="email">
+                </div>
+                
+                <div class="InLine BlueBlack">
+                    <label>Password</label>
+                    <input type="password" class="Password" name="password">
+                </div>
+                
+                <div class="InLine">
+                    <button type="submit"  class="styled-button">Create account</button>
+                </div>
+
+                <!--Display error messages if exist-->
+                {% if message %}
+                    <div>
+                        <p class="BlueBlack"> {{message}}</p>
+                    </div>
+                {% endif %}
+
+            </form>
+
+        </div>
+
+    </div> 
+           
+</body>
+</html>

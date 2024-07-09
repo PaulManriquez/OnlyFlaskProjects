@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Stock</title>
+    <!--Fonts Styles -->
+    {% include 'fontsStyles.html' %}
+</head>
+<body>
+
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+
+    <!--Display the products of your cart-->
+    <div class="FlexRow2">
+        <div class="DisplaySells1">
+            <div>
+                <h2 class="Header blackTextBorder centerBlock ">Users Registered</h2>
+            </div>
+
+            <table>
+                <tr class="table-header">
+                    <th class="TH1">ID</th>
+                    <th class="TH1">Name</th>
+                    <th class="TH1">Email</th>\
+                    <th class="TH1">Status</th>
+                    <th class="TH1">Change Status</th>
+                </tr> 
+                
+                {% for user in Users%}
+                <tr class="table-body">
+                    <td class="TH2">{{user[0]}}</td> <td class="TH2">{{user[1]}}</td> <td class="TH2">{{user[2]}}</td>
+                    <!--Status-->
+                    {% if user[3] == 0 %}
+                        <td class="TH2 greenBackground">Active</td>
+                    {% else %}
+                        <td class="TH2 redBackground">Deleted</td>
+                    {% endif %}     
+                    
+                    <!--ChangeStatus-->
+                    <td class="TH2">
+                        <form action="/usersmanage" method="POST">
+                                            <!--Sending who will change the status-->
+                            <input type="hidden" name="Email" value="{{user[2]}}">
+                            <button type="submit" class="BtnAddCart">
+                                <img src="/static/Images/switch.png" alt="add to cart icon" class="AddToCart">
+                            </button>
+
+                        </form>    
+                    </td>
+
+                </tr>
+                {% endfor %}
+                
+            </table>
+            
+        </div>
+    </div>
+    
+</body>
+</html>

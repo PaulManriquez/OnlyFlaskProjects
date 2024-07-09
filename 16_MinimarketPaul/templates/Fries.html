@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fries</title>
+    <!--Fonts Styles -->
+    {% include 'fontsStyles.html' %}
+</head>
+<body>
+    
+    
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <meta http-equiv="refresh" content="2;url={{ url_for('Fries') }}">
+            <h3 class="Header blackTextBorder greenBlack">{{ message }}</h3>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+
+    
+
+    <div class="FlexRow">
+
+        <!--Left links-->
+        {% include 'Leftlinks.html' %}
+
+    <div class="DisplayProduct">
+        <div class="">
+            
+            <h2 class="Header blackTextBorder Pat0">Select the best for you</h2>
+            {% if not session['NAME'] %}
+                <h2 class="Header blackTextBorder ">Please Login to add to cart</h2>
+            {% endif %}
+
+            {% if message %}
+                <meta http-equiv="refresh" content="2;url={{ url_for('Fries') }}">
+                <h3 class="Header blackTextBorder greenBlack">A new item has been added</h3>
+            {% endif %}
+            <!--Displaying Product-->
+            <div class="Displayer">
+
+                <!--First product CHIPS-->
+                <div class="ProductContainer">
+                    <div>
+                        <form action="/addtocart" method="POST">
+                                                    <!--Sending the name of the product and the price-->
+                            <input type="hidden" name="Name" value="chips">
+                                                    <!--Sending where comes the product to render agan the page-->
+                            <input type="hidden" name="Page" value="Fries">
+                            <img src="/static/Images/chips.png" alt="Store Logo" class="ItemsImage">
+
+                            <!--If There is a session active and is not the addmin, you can buy-->
+                            {% if session['NAME'] and session['ISADMIN'] == 0 %}
+                            <button type="submit" class="BtnAddCart">
+                                <img src="/static/Images/add-to-cart.png" alt="add to cart icon" class="AddToCart">
+                            </button>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+
+                <!--Second product CHIPS-->
+                <div class="ProductContainer">
+                    <div>
+                        <form action="/addtocart" method="POST">
+                                                    <!--Sending the name of the product and the price-->
+                            <input type="hidden" name="Name" value="lays">
+                                                    <!--Sending where comes the product to render again the page-->
+                            <input type="hidden" name="Page" value="Fries">
+                            <img src="/static/Images/lays.png" alt="Store Logo" class="ItemsImage">
+
+                            <!--If There is a session active and is not the addmin, you can buy-->
+                            {% if session['NAME'] and session['ISADMIN'] == 0 %}
+                            <button type="submit" class="BtnAddCart">
+                                <img src="/static/Images/add-to-cart.png" alt="add to cart icon" class="AddToCart">
+                            </button>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+        
+           
+</body>
+</html>

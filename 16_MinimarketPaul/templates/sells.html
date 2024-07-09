@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Sells</title>
+    <!--Fonts Styles -->
+    {% include 'fontsStyles.html' %}
+</head>
+<body>
+
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+
+    <!--Display the products of your cart-->
+    <div class="Flexcol">
+        <div class="DisplaySells">
+            <div>
+                <h2 class="Header blackTextBorder ">Current sells</h2>
+            </div>
+            <table>
+                <tr class="table-header">
+                    <th class="TH1">Sell ID</th>
+                    <th class="TH1">Customer ID</th>
+                    <th class="TH1">Name</th>
+                    <th class="TH1">Total purchase $</th>
+                    <th class="TH1">Receipt</th>
+                </tr>
+                
+                <tr class="table-body">
+                    {% for tuple in result %}
+                    <tr class="table-body">
+                      <td class="TH2">{{ tuple[0] }}</td>  <td class="TH2">{{ tuple[1] }}</td>  <td class="TH2">{{ tuple[2] }}</td>  <td class="TH2">{{ tuple[3] }}</td>  <td class="TH2"> <div class="receipt">{{ receipts[(loop.index)-1] }} </div></td> </div>
+                    </tr>
+                  {% endfor %}
+                </tr>
+
+            </table>
+            
+        </div>
+    </div>
+    
+    
+
+</body>
+</html>

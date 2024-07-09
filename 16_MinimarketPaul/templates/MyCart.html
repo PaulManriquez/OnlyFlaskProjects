@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <!--Fonts Styles -->
+    {% include 'fontsStyles.html' %}
+</head>
+<body>
+
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <meta http-equiv="refresh" content="2;url={{ url_for('MyCart') }}">
+            <li><h3 class="Header blackTextBorder greenBlack">{{ message }}</h3></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <div class="MainMainContainer">
+
+    <!-- Display The current total -->
+    <div class="FlexRow2">
+        <div class="DisplayProduct22">
+            <h3 class="MyCartProductTitle blackTextBorder">Total = $ {{Total}}</h3>
+            
+            <div class="centerBlock">
+                <!-- Pay/Buy -->
+                <form action="/pay" method="POST">
+                    <button type="submit" class="BtnAddCart">
+                        <img src="/static/Images/pay.png" alt="MyCartIcon" class="AddToCart2">
+                    </button>
+                </form>
+                
+                <!-- Clear Cart -->
+                <form action="/clearcart" method="POST">
+                    <button type="submit" class="BtnAddCart">
+                        <img src="/static/Images/emptycart.png" alt="MyCartIcon" class="AddToCart2">
+                    </button>
+                </form>
+            </div>    
+            
+        </div>
+    </div>
+
+    <!--Display the products of your cart-->
+    <div class="FlexRow">
+        <div class="DisplayProduct3">
+            {% for item, quantity in ProductsInCart.items() %}
+                {% if quantity >= 1 %}
+                    <div class="ProductContainer MarginRight MarginBottom">
+                        <h2 class="MyCartProductTitle blackTextBorder">{{ item }}</h2>
+                        <h2 class="MyCartProductTitle blackTextBorder">p/u ${{ Prices[item] }}</h2>
+                        <img src="/static/Images/{{item}}.png" alt="Store Logo" class="ItemsImage">
+                        
+                        <!--Button decrement/increment-->
+                        <div class="BTNPlusDec">
+                            <form action="/shoppingCart" method="POST">
+                                <input type="hidden" name="item" value="{{ item }}">
+                                <input type="hidden" name="action" value="decrement">
+                                <button type="submit" class="MyButton">-</button>
+                            </form>
+                            <div class="quantDislayer blackTextBorder">{{ quantity }}</div>
+                            <form action="/shoppingCart" method="POST">
+                                <input type="hidden" name="item" value="{{ item }}">
+                                <input type="hidden" name="action" value="increment">    
+                                <button type="submit" class="MyButton">+</button>
+                            </form>
+                        </div>
+                        <!-- END button to pay --> 
+                    </div>    
+                {% endif %}
+            {% endfor %}
+
+            {% if Total == 0 %}
+            <div class="Flexcol">
+                <h2 class="BlueBlack"> There is no products yet</h2>
+                <img src="/static/Images/sad.png" alt="Sad emogi" class="ItemsImage2">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

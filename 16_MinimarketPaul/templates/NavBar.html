@@ -1,0 +1,53 @@
+<!--Give a welcome if a session is active -->
+{% if session['NAME'] %}
+<div class="centerBlock">
+{% if session['ISADMIN'] == 1 %}
+    <h3 class="BlueBlack redBlack">Welcome! {{ session['NAME'] }} ( Admin )</h3>
+{% else %}
+    <div class="redBlack FlexRow">
+        <h3 class="BlueBlack">Welcome! {{ session['NAME'] }}</h3>
+        <!-- Button to my cart -->
+        <form action="/myCart" method="POST">
+            <button type="submit" class="BtnAddCart">
+                <img src="/static/Images/shopping-cart.png" alt="MyCartIcon" class="AddToCart">
+            </button>
+        </form>
+
+    </div>
+{% endif %}
+</div>
+{% endif %}
+
+
+
+<!--Nav Bar -->
+<nav class="Navegation">
+    <div class="LogoIMGHolder">
+        <img src="/static/Images/supermaket.png" alt="Store Logo" class="logoStore"> 
+    </div>
+    <h1 class="Header blackTextBorder"> Mini Market Paul</h1>
+    
+
+    <div class="NavegationDiv">
+        <a class='a1 blackTextBorder' href="{{ url_for('MainPage') }}">Main Page</a>
+        
+        <!--Display Login,Create account link if there is no active session -->
+        {% if not session['NAME'] %} 
+            <a class='a1 blackTextBorder' href="{{  url_for('LoginPage') }}">Login</a>
+            <a class='a1 blackTextBorder' href="{{ url_for('NewAccount') }}">Create account</a> 
+        {% endif %}
+
+        <!--Display For the Admin only -->
+        {% if session['NAME']  and session['ISADMIN'] == 1%} 
+            <a class='a1 blackTextBorder' href="{{  url_for('MySells') }}">My Sells</a>
+            <a class='a1 blackTextBorder' href="{{ url_for('MyCurrentStock') }}">Current Stock</a> 
+            <a class='a1 blackTextBorder' href="{{ url_for('UsersManage') }}">Users</a> 
+        {% endif %}
+
+        <!--Display Logout if there is a ression active -->
+        {% if session['NAME'] %} 
+            <a class='a1 blackTextBorder' href="{{  url_for('Logout') }}">Logout</a> 
+        {% endif %}
+
+    </div>
+</nav>
