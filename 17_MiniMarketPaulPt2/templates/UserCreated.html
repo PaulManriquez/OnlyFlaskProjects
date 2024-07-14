@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Created User</title>
+
+    <!--Fonts Styles -->
+    {% include 'fontsStyles.html' %}
+
+</head>
+<body>
+    
+    
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+
+    <div class="MainContainerLogin">
+        <div class="centerColumn">
+            <div class="AlingItems-UserLogin">
+                <h2 class="bestSellers Black-Border-Letters">The user has ben created successfully!</h2>
+                <a class='styled-button bestSellers Black-Border-Letters AdjustButton' href="{{  url_for('LoginPage') }}">Login</a>
+            </div>
+        </div>
+    </div>
+    
+           
+</body>
+</html>

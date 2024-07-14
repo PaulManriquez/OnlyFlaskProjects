@@ -1,0 +1,74 @@
+.FlexRow2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 12px 5px;
+}
+
+
+.DisplayProduct22 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #000000;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(172, 192, 199);
+}
+
+.adjustMessage{
+    left: -10px;
+    bottom: -7px;
+}
+
+
+.FlexRow{ /**/
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+} 
+
+
+.DisplayProduct3{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    
+    background-color: rgb(172, 192, 199);
+    width: 720px;
+    height: auto;
+    
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
+}
+
+
+.Adjust-Letter{
+    text-align: center;
+    padding: 0px;
+    margin: 0;
+    color: white;
+}
+
+.Adjust-Letter-Size{
+    font-size: 20px;
+}
+
+.Adjust-Letter-Size2{
+    font-size: 17px;
+    margin-bottom: 2px;
+}
+
+
+.BorderLetter{
+    border: 1px solid black;
+}
+
+.Margin{
+    margin: 0px 2px;
+}

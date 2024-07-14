@@ -1,0 +1,65 @@
+<!--Give a welcome if a session is active -->
+{% if session['NAME'] %}
+<div class="MainSession">
+{% if session['ISADMIN'] == 1 %}
+    <h3 class="Welcome-Gretting Black-Border-Letters">Welcome! {{ session['NAME'] }} ( Admin )</h3>
+{% else %}
+    <div class="Center-Gretting-Cart">
+        <h3 class="Welcome-Gretting Black-Border-Letters">Welcome {{ session['NAME'] }} !</h3>
+        <!-- Button to my cart -->
+        <form action="/myCart" method="POST">
+            <button type="submit" class="Btn-Add-Cart Block-In-Line">
+                <img src="/static/Images/shopping-cart.png" alt="MyCartIcon" class="Store-Logo">
+                <div class="LittleMessage Black-Border-Letters">My Cart</div>
+            </button>
+        </form>
+    </div>
+{% endif %}
+</div>
+{% endif %}
+
+
+
+<!--Nav Bar -->
+<nav class="MainNavContainer">
+    
+    <!--Letf side-->
+    <table class="Table-Container Block-In-Line">
+        <tr>
+            <th><img class="Store-Logo Block-In-Line GifMarket" src="/static/Images/MarketGif.gif" alt="Store Logo"></th>
+            <th><h1 class="MiniMarket-Title Block-In-Line Black-Border-Letters"> Mini Market Paul</h1></th>
+        </tr>
+    </table>
+
+    <!--Right side-->
+    <div class="Links-Nav-Container">
+        <div class="">
+            <a class='Links-NavBar Black-Border-Letters' href="{{ url_for('MainPage') }}">Main Page</a>
+            
+            <!--Display Login,Create account link if there is no active session -->
+            {% if not session['NAME'] %} 
+                <a class='Links-NavBar' href="{{  url_for('LoginPage') }}">Login</a>
+                <a class='Links-NavBar' href="{{ url_for('NewAccount') }}">Create account</a> 
+            {% endif %}
+    
+            <!--Display For the Admin only -->
+            {% if session['NAME']  and session['ISADMIN'] == 1%} 
+                <a class='Links-NavBar' href="{{  url_for('MySells') }}">My Sells</a>
+                <a class='Links-NavBar' href="{{ url_for('MyCurrentStock') }}">Current Stock</a> 
+                <a class='Links-NavBar' href="{{ url_for('UsersManage') }}">Users</a> 
+            {% endif %}
+            
+            <!--Display For the User only -->
+            {% if session['NAME']  and session['ISADMIN'] == 0%} 
+                <a class='Links-NavBar' href="{{  url_for('MyPurchases') }}">My Purchases</a>
+            {% endif %}
+    
+            <!--Display Logout if there is a ression active -->
+            {% if session['NAME'] %} 
+                <a class='Links-NavBar' href="{{  url_for('Logout') }}">Logout</a> 
+            {% endif %}
+        </div>
+    </div>
+    
+
+</nav>

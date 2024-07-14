@@ -1,0 +1,78 @@
+/*====================== Login ======================*/
+.MainContainerLogin{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.LoginFormContainer{
+    display: flex;
+    justify-content: center;
+    
+    background-color: rgb(172, 192, 199);
+    width: 35%;
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
+}
+
+.TitleDiv{
+    text-align: center;
+    font-family: "Permanent Marker", cursive;
+    color: rgb(57, 113, 218);
+    margin-bottom: 20px;
+}
+
+.H3{
+    margin: 1px;
+    margin-bottom: 2px;
+}
+
+.SP1{
+    color: aliceblue;
+}
+
+.LittleMarginBottom{
+    margin-bottom: 1px;
+    font-size: 25px;
+}
+
+.AdjustFont{
+    font-size: 22px;
+}
+
+.StyleInput{
+    border-radius: 12px;
+    padding: 2px 4px;
+    
+}
+
+/*NewAccountStyle*/
+.AddMargin{
+    margin-left: 10px;
+}
+
+/*UserCreatedSuccesfully*/
+
+.centerColumn{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(172, 192, 199);
+    width: 35%;
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
+
+}
+
+.AdjustButton{
+    margin-left: 10px;
+    padding: 1px 0px;
+    width: 100px;
+}
+
+.AlingItems-UserLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

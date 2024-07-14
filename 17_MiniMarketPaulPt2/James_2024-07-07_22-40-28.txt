@@ -1,0 +1,14 @@
+Thanks for buying in Minimarket Paul
+     Date:2024-07-07 22:40:28 
+Product        Price          Quantity
+---------------------------------------
+chips          17             1              
+lays           19             1              
+cocacola       22.5           1              
+pepsi          12.37          1              
+gamesa         11             1              
+marinela       9.5            1              
+television     2700           1              
+fan            300            1              
+--------------------------------------- 
+Total$:3091.37

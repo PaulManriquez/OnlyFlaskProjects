@@ -1,0 +1,78 @@
+.RightContainer{
+    border-radius: 20px;
+    border: 3px solid black;
+    width: 70%;
+    margin-top: 20px;
+    background-color: rgb(172, 192, 199);
+    
+    position: relative;
+}
+
+.WorldSpinning{
+    width: 70px;
+    border-radius: 50%;
+    padding: 0;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    left: 560px;
+    top: 10px;
+    position: absolute;
+}
+
+
+.bestSellers{
+    text-align: center;
+    font-size: 28px;
+    font-family: "EB Garamond", serif;
+    color: white;
+}
+
+
+/*MainRight Container*/
+.displayCenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 85px;
+}
+
+.DisplayProduct1{
+    display: flex;
+    flex-direction: row; 
+    margin-top: 27px;
+    margin-left: 0px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+    border-radius: 15px; 
+}
+
+.ProductContainer1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    display: inline-block;
+    /*background-color: #63df77;*/
+    background-color: #74c082;
+    padding: 5px ;
+    border-radius: 15px;
+    border: 3px solid black;
+    box-shadow: 4px -2px 1px grey ;
+    margin-right: 10px;
+}
+
+.Flash-Message-Main{
+    text-align: center;
+    font-size: 22px;
+    font-family: "EB Garamond", serif;
+    color: #63df77;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-bottom: 0;
+}
+
+.No-Dot{
+    list-style-type: none;
+    margin-bottom: 0;
+}

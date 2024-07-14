@@ -1,0 +1,45 @@
+.DisplayProduct{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 27px;
+    
+    background-color: rgb(172, 192, 199);
+    width: 35%;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
+}
+
+.SelectBestToYou{
+    font-family: "EB Garamond", serif;
+    color: white;
+}
+
+.LetersRed{
+    color:rgb(211, 94, 94);
+}
+
+.Displayer{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ProductContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    background-color: #74c082;
+    padding: 5px ;
+    border-radius: 15px;
+    border: 3px solid black;
+    box-shadow: 3px -3px 2px rgb(170, 161, 161);
+}
+
+.AddedToCartGif{
+    width: 200px;
+}
+

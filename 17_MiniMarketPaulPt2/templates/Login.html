@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!-- MainStyles -->
+    {% include 'fontsStyles.html' %}
+
+</head>
+<body>
+    
+    
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+
+    <div class="MainContainerLogin">
+
+        <div class="LoginFormContainer">
+            <!--=============== FORM ==============-->
+            <form action="/login" method="POST">
+    
+                <div class="TitleDiv">
+                    <h3 class="SelectBestToYou Black-Border-Letters LittleMarginBottom">Welcome to Mini Market Paul! </h3>
+                    <h3 class="H3"> <span class="SelectBestToYou Black-Border-Letters">Login</span></h5>
+                </div>
+                
+                <div class="InLine BlueBlack">
+                    <label class="SelectBestToYou Black-Border-Letters AdjustFont">Email</label>
+                    <input type="email" class="Email StyleInput " name="email">
+                </div>
+                
+                <div class="InLine BlueBlack">
+                    <label class="SelectBestToYou Black-Border-Letters AdjustFont">Password</label>
+                    <input type="password" class="Password StyleInput" name="password">
+                </div>
+                
+                <div class="InLine">
+                    <button type="submit"  class="styled-button">Login</button>
+                </div>
+
+                <!--Display error messages if exist-->
+                {% if message %}
+                    <div>
+                        <p class="BlueBlack"> {{message}}</p>
+                    </div>
+                {% endif %}
+
+            </form>
+
+        </div>
+
+    </div>
+    
+           
+</body>
+</html>

@@ -1,0 +1,560 @@
+/*====================== MainPage ======================*/
+
+body {
+    padding: 15px 25px;
+    background-color: rgb(23, 40, 56);
+}
+
+/* Navigation NAVBAR */
+
+.Navegation {
+    display: flex;
+    justify-content: space-between; /* Space between logo and navigation links */
+    align-items: center; /* Center items vertically */
+    background-color: #789eaf;; /* Optional: Background color for the nav bar */
+    padding: 20px 30px;
+    border-radius: 20px;
+    border: 3px solid black;
+    height: 50px;
+}
+
+
+.NavegationDiv {
+    display: flex;
+    gap: 60px;
+    font-family: 'Cabin', sans-serif;
+    font-size: 30px;
+    margin-left: auto; /* Push navigation links to the right */
+}
+
+
+.a1 {
+    color: rgb(57, 113, 218);
+    font-family: "Permanent Marker", cursive;
+    text-decoration: none; /* Remove underline */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    font-size: 20px;
+}
+
+.a1:hover {
+    color: #ffffff;
+    background-color: #222947;
+    border-radius: 15px;
+    padding: 10px 15px;
+}
+
+.logoStore {
+    width: 50px;
+}
+
+.Header{
+    font-family: "Permanent Marker", cursive;
+    color: rgb(57, 113, 218);
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.5);
+    margin-left: 10px;
+    padding: 10px;
+    margin-right: 15px;
+}
+
+/*========================================*/
+/*Main container*/
+.MainContainer{
+   display: flex;
+   justify-content: center; 
+   gap:70px;
+   
+}
+
+
+/*Menu Left Display*/
+.LeftContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    font-family: 'Cabin', sans-serif;
+    color: white;
+    margin-top: 20px;
+    padding: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    border: 3px solid black;
+    width: 30%;
+    background-color: #789eaf;
+
+}
+
+.LeftContainer2{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    font-family: 'Cabin', sans-serif;
+    color: white;
+    margin-top: 25px;
+    padding: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    border: 3px solid black;
+    width: 25%;
+    background-color: #789eaf;
+
+}
+
+.Products{
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 28px;
+    color: rgb(57, 113, 218);
+    border-radius: 30px;
+}
+
+.a2 {
+    color: white;
+    text-decoration: none; /* Remove underline */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    font-size: 24px; /* Increase font size */
+    background-color: rgb(68, 140, 182);
+    margin-bottom: 20px;
+    display: inline-block;
+    padding: 10px 10px;
+    border-radius: 30px;
+    border: 3px solid black;
+}
+
+.a2:hover {
+    color: #141414;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 10px 15px;
+}
+
+
+
+
+
+
+/*======================== GLOBAL CLASSES =========================*/
+
+.blackTextBorder{
+    text-shadow: 
+                1px 1px 0 #000, 
+                -1px 1px 0 #000, 
+                1px -1px 0 #000, 
+                -1px -1px 0 #000, 
+                1px 0 0 #000, 
+                -1px 0 0 #000, 
+                0 1px 0 #000, 
+                0 -1px 0 #000;
+}
+
+.BlueBlack{
+    color: rgb(57, 113, 218);
+    font-family: "Permanent Marker", cursive;
+    text-shadow: 
+                1px 1px 0 #000, 
+                -1px 1px 0 #000, 
+                1px -1px 0 #000, 
+                -1px -1px 0 #000, 
+                1px 0 0 #000, 
+                -1px 0 0 #000, 
+                0 1px 0 #000, 
+                0 -1px 0 #000;
+}
+
+
+/*Input Line - Used in login.html*/
+.InLine{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/*Buton style*/
+.styled-button {
+    background-color:  rgb(57, 113, 218); /* Green background */
+    border: none; /* Remove borders */
+    color: rgb(255, 255, 255); /* White text */
+    padding: 8px 15px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make the container an inline-block */
+    font-size: 16px; /* Increase font size */
+    margin: 4px 2px; /* Some margin */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    border-radius: 12px; /* Rounded corners */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+    width: 100%;
+}
+
+.styled-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+/*Enclose with background and border*/
+.EncloseWhite{
+    background-color: white;
+    margin-left: 10px;
+    border-radius: 15px;
+    padding: 2px 7px;
+}
+
+/*Red background */
+.redBlack{
+    background-color: #789eaf;
+    text-align: center;
+    margin-left: 10px;
+    border-radius: 15px;
+    padding: 2px 7px;
+    border: 3px solid black;
+    display: inline-block; /*The background takes just the lenght necesary*/
+}
+.center{
+    display: flex;
+    justify-content: center;
+
+    color: rgb(57, 113, 218);
+    font-family: "Permanent Marker", cursive;
+    text-decoration: none; /* Remove underline */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    font-size: 20px;
+}
+
+
+.a3 {
+    color: rgb(57, 113, 218);
+    font-family: "Permanent Marker", cursive;
+    text-decoration: none; /* Remove underline */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    font-size: 20px;
+    margin-top: 12px;
+}
+
+.a3:hover {
+    color: #ffffff;
+    background-color: #1fb433;
+    border-radius: 15px;
+    padding: 10px 15px;
+}
+
+
+
+.centerBlock{
+    display: flex;
+    justify-content: center;
+}
+
+.MainContainerBlock{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+    
+    background-color: #db3c3c;
+    width: 35%;
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
+}
+
+
+
+
+.greenBlack{
+    background-color: #1fb433;
+    border-radius: 15px;
+    border: 3px solid black;
+}
+
+.MarginRight{
+    margin-right: 10px;
+}
+
+.MarginBottom{
+    margin-bottom: 10px;
+}
+
+
+
+/*=================================================================*/
+
+
+
+/*PRODUCT CONTAINER*/
+
+
+
+
+.Displayer1{
+    display: inline-block;
+}
+
+
+
+.ItemsImage{
+    width: 80px;
+}
+
+.AddToCart{
+    width: 45px;
+    border-radius: 50%;
+    margin-top: 10px;
+    background-color: rgb(23, 40, 56);
+}
+
+/*Button add to cart*/
+.BtnAddCart{
+    display: block; /* Make the button a block element */
+    width: 100%; /* Full width of the container */
+    background: none; /* Remove default button background */
+    border: none; /* Remove default button border */
+    cursor: pointer; /* Pointer cursor on hover */
+    padding: 10px; /* Add some padding */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.BtnAddCart:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly darken background on hover */
+    transform: scale(1.2); /* Slightly enlarge the button on hover */
+}
+
+
+
+/*Btns of the cart*/
+.BTNPlusDec{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin: 10px;
+}
+
+.quantDislayer{
+    color: rgb(57, 113, 218);
+    font-family: "Permanent Marker", cursive;
+    margin: 0px 4px;
+}
+
+.MyButton{
+    border-radius: 50%;
+}
+
+.TotalToPay{
+    align-items: center;
+}
+
+.centerText{
+    align-items: center;
+}
+
+.Flexcol{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.DisplayProduct2{
+    margin-top: 50px;
+    
+    background-color: #789eaf;
+    width: auto;
+    height: 90px;
+    
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
+
+}
+
+
+
+.ItemsImage2{
+    width: 50px;
+    margin: 10px 15px;
+    text-align: center;
+    cursor: pointer;
+    
+}
+
+.FormTotal{
+    background-color: #789eaf;
+}
+
+.MyCartProductTitle{
+    color: rgb(57, 113, 218);
+    font-family: "Permanent Marker", cursive;
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    font-size: 15px;
+    text-align: center;
+    margin: 2px 10px 2px 10px;
+    
+}
+
+/*Button to pay and clear the cart*/
+
+
+
+
+.TotalToPay2 {
+    margin-bottom: 10px;
+}
+
+.ItemsImage22 {
+    width: 50px; 
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.BtnAddCart2 {
+    display: inline;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.AddToCart2 {
+    width: 50px; 
+    height: auto;
+    display: inline;
+}
+
+
+.MainMainContainer{
+    display: flex;
+    align-items: flex-start;
+}
+
+
+/*Thanks page*/
+.DisplayProduct4{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    
+    background-color: rgb(172, 192, 199);
+    width: 350px;
+    height: 250px;
+    
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
+
+    background-image: url('./Images/Thanks.gif'); 
+    background-size: 300px 200px; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+
+
+/*Display Sells*/
+.DisplaySells{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    
+    background-color: #789eaf;
+    width: 700px;
+    height: auto;
+    
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
+}
+
+.DisplaySells2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    text-align: center;
+    margin-top: 10px;
+    
+    background-color: #789eaf;
+    width: 700px;
+    height: auto;
+    
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
+
+}
+
+
+.table-header {
+    font-weight: bold; 
+    background-color: #0e2c4b; /* Add a light gray background */
+    text-align: center;
+    color: white;
+}
+
+.TH1{
+    border-radius: 10px;
+    border: 4px solid rgb(136, 129, 129);
+}
+
+.TH2{
+    border-radius: 10px;
+    border: 2px solid rgb(136, 129, 129);
+}
+
+.table-body {
+    border: 3px solid #000000; 
+    background-color: #1c3f63;
+    text-align: center;
+    color: rgb(243, 243, 243);
+}
+  
+td, th {
+    padding: 10px; /* Add some padding for readability */
+}
+
+
+/*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*/
+/*Displays the receipts*/
+.receipt {
+    font-family: monospace; /*<---- monospace font ensures that the text retains its formatting*/
+    white-space: pre; /*<--- white-space: pre CSS property preserves whitespace and newlines in the text.*/
+    background-color: #1b1b1b;
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+/*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*/
+
+.DisplaySells1{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+    
+    background-color: #789eaf;
+    width: 700px;
+    height: auto;
+    
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
+
+}
+
+.redBackground{
+    background-color: rgb(196, 49, 49);
+}
+
+.greenBackground{
+    background-color: #2e913e;
+}
+
+.yellowBackground{
+    background-color: rgb(194, 194, 49)
+}

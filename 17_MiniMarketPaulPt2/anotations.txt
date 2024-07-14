@@ -1,0 +1,31 @@
+ProductsInCart = {
+    'chips': 0,
+    'lays':0,
+    'cocacola':0,
+    'pepsi':0,
+    'gamesa':0,
+    'marinela':0,
+    'television':0,
+    'fan':0
+}
+Prices = {
+    'chips': 17,
+    'lays':19,
+    'cocacola':22.5,
+    'pepsi': 12.37,
+    'gamesa':11,
+    'marinela':9.5,
+    'television':2700,
+    'fan':300
+}
+#Stock available to buy
+InStock = {
+    'chips': 10,
+    'lays':20,
+    'cocacola': 5,
+    'pepsi': 7,
+    'gamesa':8,
+    'marinela': 1,
+    'television':3,
+    'fan': 2
+}

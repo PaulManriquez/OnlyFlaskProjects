@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lays</title>
+    <!--Fonts Styles -->
+    {% include 'fontsStyles.html' %}
+</head>
+<body>
+    
+    
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <meta http-equiv="refresh" content="2;url={{ url_for('Fries') }}">
+            <h3 class="Header blackTextBorder greenBlack">{{ message }}</h3>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <div class="FlexRow">
+        <!--Left links-->
+        {% include 'Leftlinks.html' %}
+    
+    <!--Right Container-->    
+    <div class="DisplayProduct">
+        <div class="">
+            
+            <h2 class="SelectBestToYou Black-Border-Letters">
+                Select the best for you!
+            </h2>
+
+            {% if message %}
+                <meta http-equiv="refresh" content="2;url={{ url_for('Fries') }}">
+                <h2 class="SelectBestToYou Black-Border-Letters">Product added to cart!: {{ProductName}}</h2>
+                <img src="/static/Images/AddedToCart.gif" class="AddedToCartGif">
+            {% endif %}
+
+
+            {% if not session['NAME'] %}
+                <h2 class="SelectBestToYou Black-Border-Letters LetersRed ">Please Login to add to cart</h2>
+            {% endif %}
+
+            <!--Displaying Products-->
+            <div class="Displayer">
+            <!--Display all the products with the corresponding category-->    
+                {% for product in Products %} 
+                <div class="ProductContainer">
+                    <div>
+                        <form action="/addtocart" method="POST">
+                                                    <!--Sending the name of the product and the price-->
+                            <input type="hidden" name="Name" value="{{product[0]}}">
+                                                    <!--Sending where comes the product to render agan the page-->
+                            <input type="hidden" name="Page" value="{{product[1]}}">
+                            <img src="/static/Images/{{product[0]}}.png" alt="Store Logo" class="ItemsImage">
+
+                            <!--If There is a session active and is not the addmin, you can buy-->
+                            {% if session['NAME'] and session['ISADMIN'] == 0 %}
+                            <button type="submit" class="BtnAddCart">
+                                <img src="/static/Images/add-to-cart.png" alt="add to cart icon" class="AddToCart">
+                            </button>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                <!--{% if message %}-->
+                <!--<meta http-equiv="refresh" content="2;url={{ url_for('Sodas') }}">-->
+                <!--<h3 class="">A new item has been added</h3>-->
+                <!--{% endif %}-->
+
+            </div>
+        </div>
+    </div>
+
+</div>
+        
+           
+</body>
+</html>

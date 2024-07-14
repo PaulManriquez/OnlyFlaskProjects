@@ -1,0 +1,148 @@
+.MainNavContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid black;
+    padding: 10px;
+    background-color: rgb(172, 192, 199);
+    border-radius: 15px;
+    height: 70px;
+}
+
+.Table-Container{
+    margin: 2px 2px;
+    border-spacing: 5px;
+}
+
+.Table-Container th{
+    padding: 0px 1px;
+    margin-top: 1px;
+    
+}
+
+.Store-Logo{
+    width: 60px;
+}
+
+.MiniMarket-Title{
+    font-family: "EB Garamond", serif;
+    color: white;
+    padding: 0;  
+    font-size: 35px;
+    
+}
+
+.Black-Border-Letters{
+    text-shadow:    -1px -1px 0 #000, 
+                    1px -1px 0 #000, 
+                    -1px 1px 0 #000, 
+                    1px 1px 0 #000;
+}
+
+.Block-In-Line{
+    display: inline-block;
+}
+
+/**/
+.Links-Nav-Container{
+    display: flex;
+    justify-content: space-between;
+    margin: 2px 2px;
+    padding: 5px;
+    gap: 20px;
+    height: 100px;
+    align-items: center;
+}
+
+/**/
+.Links-NavBar{
+    font-size: 25px;   
+    font-family: "EB Garamond", serif;;
+    text-decoration: none; 
+    color: white;
+    margin-right: 15px;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 2px 8px;
+    box-shadow: 4px 3px 1px rgb(117, 108, 99);
+    background-color: rgb(23, 40, 56);
+}
+
+.Links-NavBar:hover{
+    background-color: rgb(42, 62, 82);
+}
+
+@media (max-width: 768px) {
+    .Links-Nav-Container {
+        flex-direction: column;
+        height: auto;
+        align-items: flex-start;
+    }
+}
+
+/*If there is a session part*/
+.MainSession{
+    display: flex;
+    justify-content: center;
+    
+    margin-bottom: 10px;
+}
+
+.Welcome-Gretting{
+    font-family: "EB Garamond", serif;
+    color: white;
+    padding: 3px 6px;  
+    font-size: 25px;
+    margin: 0px;
+    background-color: rgb(85, 85, 99);
+    margin: 4px solid black;
+    border-radius: 20px;
+    box-shadow: 2px 2px 1px black;
+}
+
+.Btn-Add-Cart{
+    width: 100%; /* Full width of the container */
+    background: none; 
+    border: none; 
+    cursor: pointer; /* Pointer cursor on hover */
+    padding: 5px; 
+    transition: transform 0.3s ease; 
+
+    cursor: pointer;
+    position: relative;
+}
+
+.LittleMessage{
+    position: absolute;
+    right: -35px;
+    bottom: 1px;
+    font-size: 15px;
+    background-color: rgb(112, 106, 106);
+    color: white;
+    font-family: "EB Garamond", serif;
+    margin: 2px solid black;
+    border-radius: 10px;
+    padding: 2px 6px;
+    opacity: 0;
+}
+
+.Btn-Add-Cart:hover {
+    transform: scale(1.2); /* Slightly enlarge the button on hover */
+}
+
+.Btn-Add-Cart:hover .LittleMessage{
+    opacity: 1;
+}
+
+.Center-Gretting-Cart{
+    display: flex;
+    align-items: center;
+}
+
+.GifMarket{
+    width: 70px;
+    height: 72px;
+    border-radius: 50%;
+    margin: 0;
+    padding: 10px 0px;
+}
