@@ -148,8 +148,8 @@ def Logout():
     session.clear()
     #<--------- Clear the cart 
     ClearTheCart()
-    return redirect(url_for('MainPage'))
-
+    #return redirect(url_for('MainPage'))
+    return render_template('Log_Out.html')
 
 #=== Create a New Account
 @app.route('/newAccount',methods=['GET','POST'])

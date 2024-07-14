@@ -1,0 +1,97 @@
+.DisplaySells1{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+    
+    background-color: rgb(172, 192, 199);
+    width: 700px;
+    height: auto;
+    
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
+
+}
+
+.TH1{
+    border-radius: 10px;
+    border: 4px solid rgb(136, 129, 129);
+}
+
+.TH2{
+    border-radius: 10px;
+    border: 2px solid rgb(136, 129, 129);
+}
+
+.LittleFont{
+    font-size: 20px;
+}
+
+.LittleFont2{
+    font-size: 17px;
+}
+
+.redBackground{
+    background-color: rgb(196, 49, 49);
+}
+
+.greenBackground{
+    background-color: #2e913e;
+}
+
+.yellowBackground{
+    background-color: rgb(194, 194, 49)
+}
+
+/*Display Sells*/
+.DisplaySells{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    
+    background-color: rgb(172, 192, 199);
+    width: 700px;
+    height: auto;
+    
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 3px solid black;
+}
+
+
+
+.table-header {
+    font-weight: bold; 
+    background-color: rgb(23, 40, 56);
+    text-align: center;
+    color: white;
+}
+
+
+.table-body {
+    border: 3px solid #000000; 
+    background-color: rgb(23, 40, 56);
+    text-align: center;
+    color: rgb(243, 243, 243);
+}
+  
+td, th {
+    padding: 10px; /* Add some padding for readability */
+}
+
+
+/*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*/
+/*Displays the receipts*/
+.receipt {
+    font-family: monospace; /*<---- monospace font ensures that the text retains its formatting*/
+    white-space: pre; /*<--- white-space: pre CSS property preserves whitespace and newlines in the text.*/
+    background-color: #1b1b1b;
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+/*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*/
+

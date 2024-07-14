@@ -16,21 +16,25 @@
     <div class="Flexcol">
         <div class="DisplaySells">
             <div>
-                <h2 class="Header blackTextBorder ">Current sells</h2>
+                <h2 class="bestSellers Black-Border-Letters ">Current sells</h2>
             </div>
             <table>
                 <tr class="table-header">
-                    <th class="TH1">Sell ID</th>
-                    <th class="TH1">Customer ID</th>
-                    <th class="TH1">Name</th>
-                    <th class="TH1">Total purchase $</th>
-                    <th class="TH1">Receipt</th>
+                    <th class="TH1 bestSellers Black-Border-Letters LittleFont2">Sell ID</th>
+                    <th class="TH1 bestSellers Black-Border-Letters LittleFont2">Customer ID</th>
+                    <th class="TH1 bestSellers Black-Border-Letters LittleFont2">Name</th>
+                    <th class="TH1 bestSellers Black-Border-Letters LittleFont2">Total purchase $</th>
+                    <th class="TH1 bestSellers Black-Border-Letters LittleFont2">Receipt</th>
                 </tr>
                 
                 <tr class="table-body">
                     {% for tuple in result %}
                     <tr class="table-body">
-                      <td class="TH2">{{ tuple[0] }}</td>  <td class="TH2">{{ tuple[1] }}</td>  <td class="TH2">{{ tuple[2] }}</td>  <td class="TH2">{{ tuple[3] }}</td>  <td class="TH2"> <div class="receipt">{{ receipts[(loop.index)-1] }} </div></td> </div>
+                      <td class="TH1 bestSellers Black-Border-Letters LittleFont2">{{ tuple[0] }}</td>  
+                      <td class="TH1 bestSellers Black-Border-Letters LittleFont2">{{ tuple[1] }}</td>  
+                      <td class="TH1 bestSellers Black-Border-Letters LittleFont2">{{ tuple[2] }}</td>  
+                      <td class="TH1 bestSellers Black-Border-Letters LittleFont2">{{ tuple[3] }}</td>  
+                      <td class="TH2"> <div class="receipt">{{ receipts[(loop.index)-1] }} </div></td> </div>
                     </tr>
                   {% endfor %}
                 </tr>

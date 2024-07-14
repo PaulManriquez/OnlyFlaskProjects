@@ -16,27 +16,27 @@
     <div class="FlexRow2">
         <div class="DisplaySells1">
             <div>
-                <h2 class="Header blackTextBorder centerBlock ">My stock</h2>
+                <h2 class="bestSellers Black-Border-Letters ">My stock</h2>
             </div>
 
             <table>
                 <tr class="table-header">
-                    <th class="TH1">Product</th>
-                    <th class="TH1">Image</th>
-                    <th class="TH1">Stock</th>
+                    <th class="TH1 bestSellers Black-Border-Letters">Product</th>
+                    <th class="TH1 bestSellers Black-Border-Letters">Image</th>
+                    <th class="TH1 bestSellers Black-Border-Letters">Stock</th>
                 </tr> 
                 
                 {% for product, quantity in InStock.items() %}
                 <tr class="table-body">
-                    <td class="TH2">{{ product }}</td> 
+                    <td class="TH2 bestSellers Black-Border-Letters">{{ product }}</td> 
                     <td class="TH2"><img src="/static/Images/{{product}}.png" alt="add to cart icon" class="ItemsImage"> </td>  
                       
                     {% if quantity >= 30 %}
-                        <td class="TH2 greenBackground">{{ quantity }}</td>
+                        <td class="TH2 bestSellers Black-Border-Letters greenBackground">{{ quantity }}</td>
                     {% elif quantity >= 15 and quantity < 30 %}
-                        <td class="TH2 yellowBackground">{{ quantity }}</td>
+                        <td class="TH2 bestSellers Black-Border-Letters yellowBackground">{{ quantity }}</td>
                     {% else %}
-                        <td class="TH2 redBackground">{{ quantity }}</td>  
+                        <td class="TH2 bestSellers Black-Border-Letters redBackground">{{ quantity }}</td>  
                     {% endif %}  
                 </tr>
                 {% endfor %}

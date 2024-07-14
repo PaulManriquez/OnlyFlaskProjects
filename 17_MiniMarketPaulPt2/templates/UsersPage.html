@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Current Stock</title>
+    <title>Users Logged</title>
     <!--Fonts Styles -->
     {% include 'fontsStyles.html' %}
 </head>
@@ -16,26 +16,28 @@
     <div class="FlexRow2">
         <div class="DisplaySells1">
             <div>
-                <h2 class="Header blackTextBorder centerBlock ">Users Registered</h2>
+                <h2 class="bestSellers Black-Border-Letters ">Users Registered</h2>
             </div>
 
             <table>
                 <tr class="table-header">
-                    <th class="TH1">ID</th>
-                    <th class="TH1">Name</th>
-                    <th class="TH1">Email</th>\
-                    <th class="TH1">Status</th>
-                    <th class="TH1">Change Status</th>
+                    <th class="TH1 bestSellers Black-Border-Letters">ID</th>
+                    <th class="TH1 bestSellers Black-Border-Letters">Name</th>
+                    <th class="TH1 bestSellers Black-Border-Letters">Email</th>\
+                    <th class="TH1 bestSellers Black-Border-Letters">Status</th>
+                    <th class="TH1 bestSellers Black-Border-Letters">Change Status</th>
                 </tr> 
                 
                 {% for user in Users%}
                 <tr class="table-body">
-                    <td class="TH2">{{user[0]}}</td> <td class="TH2">{{user[1]}}</td> <td class="TH2">{{user[2]}}</td>
+                    <td class="TH2 bestSellers Black-Border-Letters LittleFont">{{user[0]}}</td> 
+                    <td class="TH2 bestSellers Black-Border-Letters LittleFont">{{user[1]}}</td> 
+                    <td class="TH2 bestSellers Black-Border-Letters LittleFont">{{user[2]}}</td>
                     <!--Status-->
                     {% if user[3] == 0 %}
-                        <td class="TH2 greenBackground">Active</td>
+                        <td class="TH2 bestSellers Black-Border-Letters LittleFont greenBackground">Active</td>
                     {% else %}
-                        <td class="TH2 redBackground">Deleted</td>
+                        <td class="TH2 bestSellers Black-Border-Letters LittleFont redBackground">Deleted</td>
                     {% endif %}     
                     
                     <!--ChangeStatus-->
