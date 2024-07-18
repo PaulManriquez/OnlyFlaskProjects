@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddNewP</title>
+    <!--Fonts Styles -->
+    {% include 'fontsStyles.html' %}
+</head>
+<body>
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+    
+    <div class="ContainerProduct">
+        <div class="AddProduct">
+            <form action="/AddNewP" method="POST" enctype="multipart/form-data" class="FormAddProduct">
+                <input class="SelectFile Black-Border-Letters" type="file" name="file1"><!--INPUT FILE-->
+                
+                <label class="Black-Border-Letters">Product name:</label>
+                <input class=""type="text" name="filename"><!--Name that will have the file-->
+                
+                <!-- Section Dropdown -->
+                <label class="BlockE Black-Border-Letters">Category</label>
+                <select name="section" class="">
+                    {% for section in sections %}
+                        <option value="{{ section }}">{{ section }}</option>
+                    {% endfor %}
+                </select>
+
+                <div class="BlockE"></div>
+                
+                <label class="BlockL Black-Border-Letters">Price $:</label>
+                <input class=""type="number" name="Price">
+                
+                <div class="BlockE"></div>
+                
+                <label class="BlockL Black-Border-Letters">In stock:</label>
+                <input class=""type="number" name="Stock">
+
+                <div class="InLine btnUp">
+                    <button type="submit"  class="styled-button">Upload New Product</button>
+                </div>
+
+                <!--Display flashes messages if exist-->
+                <!--If there are flash messages-->
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                        <ul class="No-Dot">
+                        {% for message in messages %}
+                            <meta http-equiv="refresh" content="2;url={{ url_for('AddNewP') }}">
+                            <li><h3 class="Flash-Message-Main Black-Border-Letters Red-L">{{ message }}</h3></li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

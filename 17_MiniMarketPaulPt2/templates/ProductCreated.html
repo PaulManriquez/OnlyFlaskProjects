@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Created</title>
+    <!--Fonts Styles -->
+    {% include 'fontsStyles.html' %}
+</head>
+<body>
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+    
+    <div class="Created-Container">
+        <div class="DisplayNewProduct">
+            <img  src="/static/Images/{{filename}}" alt="Store Logo">
+            <h3 class="Black-Border-Letters">Confirm data to store the product</h3>
+            <p class="Black-Border-Letters"> Product name: {{Data[0]}} <br>
+                Price: {{Data[1]}} <br>
+                Stock: {{Data[2]}} <br>
+                Category: {{Data[3]}}
+            </p>
+
+            <div class="BtnContainer">
+                <form action="/NewProductAdded" method="POST">
+                    <input type="hidden" name="Name" value="GO"><!--Action-->
+                    
+                    <!--Data-->
+                    <input type="hidden" name="productName" value="{{Data[0]}}">
+                    <input type="hidden" name="price" value="{{Data[1]}}">
+                    <input type="hidden" name="stock" value="{{Data[2]}}">
+                    <input type="hidden" name="category" value="{{Data[3]}}">
+                    <input type="hidden" name="filename" value="{{filename}}">
+                    
+                    <button type="submit" class="styled-button">Confirm</button>
+                </form>
+    
+                <form action="/NewProductAdded" method="POST">
+                    <input type="hidden" name="Name" value="STOP"><!--Action-->
+                    <input type="hidden" name="filename" value="{{filename}}">
+                    <button type="submit" class="styled-button RedHover">Cancel</button>
+                </form>
+            </div>
+            
+
+        </div>
+    </div>
+
+</body>
+</html>

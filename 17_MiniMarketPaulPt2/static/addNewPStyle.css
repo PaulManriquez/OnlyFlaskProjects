@@ -1,0 +1,102 @@
+.ContainerProduct{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.SelectFile{
+    font-family: "EB Garamond", serif;
+    color: white;
+    
+}
+
+.FormAddProduct label{
+    text-align: center;
+    margin-top: 5px;
+    font-family: "EB Garamond", serif;
+    color: white;
+    font-size: 25px;
+}
+.BlockE{
+    display: block;    
+}
+.BlockL{
+    display: inline-block;
+}
+
+.AddProduct{
+    width: 25%;
+    height: auto;
+    background-color: rgb(172, 192, 199);
+    padding: 10px;
+    margin: 10px;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.FormAddProduct{
+    display: flex;
+    flex-direction: column;
+}
+
+.FormAddProduct input, select{
+    border-radius: 10px;
+}
+
+.btnUp{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.Red-L{
+    color: red;
+}
+
+/*Displaying new product*/
+.Created-Container{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.DisplayNewProduct{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 400px;
+    border: 3px solid black;
+    border-radius: 10px;
+    box-shadow: 3px -2px 1px grey;
+}
+
+.DisplayNewProduct img{
+    width: 150px;
+    border: 3px solid black;
+    box-shadow: 3px -2px 1px grey;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: rgb(172, 192, 199);
+    margin-bottom: 2px;
+}
+
+.DisplayNewProduct p, h3{
+    margin: 1px;
+    font-family: "EB Garamond", serif;
+    color: white;
+    font-size: 25px;
+}
+
+
+.BtnContainer{
+    display: flex;
+    align-items: center;
+    gap:15px;
+    margin-top: 10px;
+}
+
+.RedHover:hover{
+    background-color: rgb(224, 66, 66);
+}

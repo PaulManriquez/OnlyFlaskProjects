@@ -7,9 +7,19 @@ import random
 import io
 
 
+#=== Modules to upload an image  ==========
+#=== (Upload A new Product Part) ==========
+from werkzeug.utils import secure_filename
+UPLOAD_FOLDER = 'static/Images' #Where the images will be stored 
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+import os 
+#===============================================================
+
+
 #=========Flask instances and configurations===========
 app = Flask(__name__)
 app.secret_key = 'SECRETKEY'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #======================================================
 #========== Products in the store =====================
 def load_data():
@@ -301,7 +311,7 @@ def AddtoCart():
     try:
         ProductName = request.form['Name']   #Name of the product 
         Page = request.form['Page'] + '.html' #Name of the page where comes the petition
-        print(f'-------->{Page}')
+        print(f'-------->{Page} {ProductName}')
         DisplayCurrentCart()
         #Add the item to the cart if there is stock available
         if InStock[ProductName]>=1:
@@ -335,8 +345,6 @@ def shopping_cart():
     try:
         Product = request.form['item'] #Get the name of the product to perform an operation
         Action = request.form['action'] #Get the action to perform
-    
-        print(f'-->{Product} {Action}')
     
         #=== Increment or decrement product in the Cart
         if Action == 'increment':
@@ -587,6 +595,109 @@ def MyPurchases():
         return f'Error:{e}'
 
     
+#================= Add New Product by the admin ===============================    
+@app.route('/AddNewP',methods=['GET','POST'])
+def AddNewP():
+
+    try:
+        if request.method == 'POST':
+            if 'file1' not in request.files:
+                flash('No file uploaded')
+                return redirect(url_for('AddNewP'))
+            
+            file1 = request.files['file1'] #<-- Get the file object
+            filename = request.form.get('filename') #<-- Name that will have the file 
+
+            ProductName =request.form.get('filename')
+            Category = request.form['section']
+            Price = request.form['Price']
+            Stock = request.form['Stock']
+
+            Data = (ProductName,Price,Stock,Category) 
+            #print(f'**********{Data}')
+            if not filename or not ProductName or not Category or not Price or not Stock:
+                flash('Fill all the data')
+                return redirect(url_for('AddNewP'))
+            
+            #=== Get the original extention of the file
+            extension = ''
+            if '.' in file1.filename:
+                extension = '.' + file1.filename.split('.')[-1]  
+            #==========================================
+            
+            #Name and extention to save the file
+            filename = filename + extension
+
+            path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file1.save(path)
+            return render_template('ProductCreated.html',Data=Data,filename=filename) #<-- Return to a page where is being displayed as a product
+        else:#GET method
+
+            db = get_db_connection()
+
+            if not db: #If there is an error in the data base connection | Return 
+                return f'Error in data base'
+            
+            #============== Retrieve Data from the data base 
+            cur = db.cursor() #Point to the data base
+            sqlQuery = 'SELECT DISTINCT category FROM products' #<--- unique products
+            cur.execute(sqlQuery) # Write the query with parameterized input
+            result = cur.fetchall() # <-- Return a tuple list with the data 
+            cur.close()# <-- close cur connection 
+            close_db_connection(db)# <-- close data base connection
+            #===============================================================
+            
+            #Results (Available products section in the store)
+            List_Results = [item[0] for item in result]
+            
+            return render_template('AddNewP.html',sections=List_Results)
+    except Exception as e:
+        return f'Error: {e}'
+
+@app.route('/NewProductAdded',methods=['POST'])
+def ConfirmNewP():
+    #Store the product or Cancel  
+    try:
+        if request.form['Name'] == 'GO':  
+            Product_Name = request.form['productName']
+            Price = request.form['price']
+            Stock = request.form['stock']
+            Category = request.form['category']
+        
+            Data = (Product_Name,Price,Stock,Category)
+            print(Data)
+            print('<><><><>')
+            db = get_db_connection()
+
+            if not db: #If there is an error in the data base connection | Return 
+                return f'Error in data base'
+
+            #============== Insert a new product in the data base 
+            cur = db.cursor() #Point to the data base
+            sqlQuery = 'INSERT INTO products (product_name,price,stock,category) VALUES (%s,%s,%s,%s)'
+            cur.execute(sqlQuery,Data) # Write the query with parameterized input
+            db.commit()#<--- Insert the new product in the data base 
+            cur.close()# <-- close cur connection 
+            close_db_connection(db)# <-- close data base connection
+            #===============   
+            return render_template('ProductAdded.html',productName=request.form['filename'],Data=Data)
+        else:
+            # Delete the previously stored image
+            filename = request.form['filename']
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            if os.path.exists(file_path):
+                os.remove(file_path)
+                print(f"Deleted file: {file_path}")
+            else:
+                print(f"File not found: {file_path}")
+
+            return redirect(url_for('AddNewP'))    
+    except Exception as e:
+        return f'Error:{e}'
+#================= Add New Product by the admin ===============================    
+    
+
+
 
 
 if __name__ == '__main__':

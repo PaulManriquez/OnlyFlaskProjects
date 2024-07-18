@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Displaying New Product Added</title>
+    <!--Fonts Styles -->
+    {% include 'fontsStyles.html' %}
+</head>
+<body>
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+    
+    <div class="Created-Container">
+        <div class="DisplayNewProduct">
+            <img  src="/static/Images/{{productName}}" alt="Store Logo">
+            <h3 class="Black-Border-Letters">{{Data[0]}} was added! </h3>
+        </div>
+    </div>
+
+</body>
+</html>
