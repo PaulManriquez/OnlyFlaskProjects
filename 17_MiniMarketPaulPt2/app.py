@@ -11,7 +11,7 @@ import io
 #=== (Upload A new Product Part) ==========
 from werkzeug.utils import secure_filename
 UPLOAD_FOLDER = 'static/Images' #Where the images will be stored 
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['png'])
 import os 
 #===============================================================
 
@@ -649,7 +649,7 @@ def AddNewP():
             
             #Results (Available products section in the store)
             List_Results = [item[0] for item in result]
-            
+                                                #For category choose 
             return render_template('AddNewP.html',sections=List_Results)
     except Exception as e:
         return f'Error: {e}'
@@ -696,6 +696,48 @@ def ConfirmNewP():
         return f'Error:{e}'
 #================= Add New Product by the admin ===============================    
     
+#============= Delete a product (MyCurrentStock) <-- comes from 
+@app.route('/DeleteP',methods=['POST'])
+def Delete_P():
+    try:
+        Image = request.form['ProductD'] 
+        return render_template('PreDelite.html',Image=Image) 
+    except Exception as e:
+        return f'Error:{e}'
+    
+#Definitely Delete (Finish)
+@app.route('/DeleteF',methods=['POST'])
+def DeleteF():
+    try:
+        ToDelete = request.form['ToDelete']
+        Image = ToDelete + '.png'
+
+        #1)Delete the image of the product
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], Image)
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            print(f"Deleted file: {file_path}")
+        else:
+            print(f"File not found: {file_path}")
+
+        #2)Delete from the data base
+        db = get_db_connection()
+
+        if not db: #If there is an error in the data base connection | Return 
+            return f'Error in data base'
+
+        #============== Delete a product from the data base 
+        cur = db.cursor() #Point to the data base
+        sqlQuery = 'DELETE FROM products WHERE product_name = %s'
+        cur.execute(sqlQuery,(ToDelete,)) # Write the query with parameterized input
+        db.commit()#<--- Delete the product from the data base 
+        cur.close()# <-- close cur connection 
+        close_db_connection(db)# <-- close data base connection
+        #===============        
+        
+        return redirect(url_for('MyCurrentStock')) 
+    except Exception as e:
+        return f'Error: {e}'
 
 
 

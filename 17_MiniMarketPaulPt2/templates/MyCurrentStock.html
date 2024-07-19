@@ -37,7 +37,19 @@
                         <td class="TH2 bestSellers Black-Border-Letters yellowBackground">{{ quantity }}</td>
                     {% else %}
                         <td class="TH2 bestSellers Black-Border-Letters redBackground">{{ quantity }}</td>  
-                    {% endif %}  
+                    {% endif %}
+                    
+                    <!--Button to delete -->
+                    <td class="TH2 bestSellers Black-Border-Letters">
+                        <form action="/DeleteP" method="POST">
+                            <button type="submit" class="Btn-Add-Cart">
+                                <img src="/static/Images/delete.png" alt="MyCartIcon" class="AddToCart2">
+                                <div class="LittleMessage adjustMessage Black-Border-Letters">Delete {{product}}</div>
+                                <input type="hidden" name="ProductD" value="{{ product }}"><!--Product to delete -->
+                            </button>
+                        </form>
+                    </td> 
+                    
                 </tr>
                 {% endfor %}
                 

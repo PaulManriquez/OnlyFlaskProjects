@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+    <!--Fonts Styles -->
+    {% include 'fontsStyles.html' %}
+</head>
+<body>
+    <!--Nav Bar -->
+    {% include 'NavBar.html' %}
+    
+    <div class="Created-Container">
+        <div class="DisplayNewProduct">
+            <img  src="/static/Images/{{Image}}.png" alt="Store Logo">
+            <h3 class="Black-Border-Letters">Are you sure to delete {{Image}}?</h3>
+            <form action="/DeleteF" method="POST">
+                <input type="hidden" name="ToDelete" value="{{Image}}">
+                <button type="submit" class="styled-button RedHover">Delete</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

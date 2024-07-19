@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     margin-top: 30px;
+    gap: 15px;
 }
 
 .SelectFile{
@@ -99,4 +100,13 @@
 
 .RedHover:hover{
     background-color: rgb(224, 66, 66);
+}
+
+
+/*Delete a product container*/
+.Delete-Product-Container{
+    background-color: brown;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 10px;
 }
